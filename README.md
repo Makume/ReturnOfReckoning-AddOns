@@ -19,3 +19,11 @@ Works with [Verticaltactics](https://tools.idrinth.de/addons/verticaltactics/).
 # SellPrice v1.0.0
 
 The AddOn SellPrice show always the sell price from an item in the tooltip
+
+# WarBoard_Clock v0.4.0
+
+This Extension for the AddOn [WarBoard](https://tools.idrinth.de/addons/warboard/) show additional information for Server Time.
+
+# WarBoard_Session v0.7.0
+
+This Extension for the AddOn [WarBoard_Session](https://tools.idrinth.de/addons/warboard_session/) show additional informations for Gold and War Crests.
