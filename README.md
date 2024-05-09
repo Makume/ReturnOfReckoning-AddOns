@@ -24,6 +24,10 @@ Works with [Verticaltactics](https://tools.idrinth.de/addons/verticaltactics/).
 
 The AddOn SellPrice show always the sell price from an item in the tooltip
 
+# StopRes v1.1.0
+
+[StopRes](https://tools.idrinth.de/addons/stopres/) is a tiny little QoL addon that will automatically cancel your ressurect spell if the person you are targetting has been ressurected. 
+
 # WarBoard_Clock v0.4.0
 
 This Extension for the AddOn [WarBoard](https://tools.idrinth.de/addons/warboard/) show additional information for Server Time.
