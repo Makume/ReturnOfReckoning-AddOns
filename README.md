@@ -6,6 +6,10 @@ User interface add-ons for the game Warhammer Online - [Return of Reckoning](htt
 
 Select the addon you want. Click on the folder. Then click on the ZIP file and download it
 
+# Enemy v2.8.5
+
+This Extension for the AddOn [Enemy](https://tools.idrinth.de/addons/enemy/) add configuration for the indicators to show on minimum and/or maximum player health in percent.
+
 # RezEmote v1.0.0
 
 The AddOn RezEmote send the Rez emote on player death.
