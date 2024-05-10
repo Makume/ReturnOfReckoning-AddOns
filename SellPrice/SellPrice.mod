@@ -42,9 +42,9 @@
 		<File name="SellPrice.lua" />
 	</Files>
 	<OnInitialize>         
-    	<CallFunction name="SellPrice.Initialize" />      
-    </OnInitialize>      
-    <OnUpdate/>      
-    <OnShutdown/>  
+    		<CallFunction name="SellPrice.Initialize" />      
+    	</OnInitialize>      
+    	<OnUpdate/>      
+    	<OnShutdown/>  
 </UiMod>
 </ModuleFile>
