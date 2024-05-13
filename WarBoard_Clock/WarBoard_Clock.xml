@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Windows>
+		<Window name="WarBoard_Clock" inherits="EA_Window_Default" movable="false" layer="secondary" savesettings="false" >
+			<Size>
+				<AbsPoint x="110" y="30" />
+			</Size>
+			<EventHandlers>
+				<EventHandler event="OnMouseOver" function="WarBoard_Clock.OnMouseOver" />
+				<EventHandler event="OnLButtonUp" function="WarBoard_Clock.OnOptionsButton" />				
+			</EventHandlers>
+			<Windows>
+				<FullResizeImage name="$parentBackground" inherits="ModBackgroundTemplate" />
+					<Label name="$parentText" font="font_default_text_large" layer="default" handleinput="false" skipinput="false" textalign="center">
+					<Size>
+						<AbsPoint x="150" y="30" />
+					</Size>
+					<Anchors>
+						<Anchor point="center" relativeTo="" relativePoint="center" >
+							<AbsPoint x="" y="2" />
+						</Anchor>
+					</Anchors>
+				</Label>
+			</Windows>
+		</Window>
+	</Windows>
+</Interface>
