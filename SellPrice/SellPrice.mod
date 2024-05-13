@@ -43,8 +43,8 @@
 	</Files>
 	<OnInitialize>         
     		<CallFunction name="SellPrice.Initialize" />      
-    	</OnInitialize>      
-    	<OnUpdate/>      
-    	<OnShutdown/>  
+    </OnInitialize>      
+    <OnUpdate/>      
+    <OnShutdown/>  
 </UiMod>
 </ModuleFile>
