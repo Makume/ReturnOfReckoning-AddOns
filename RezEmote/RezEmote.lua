@@ -27,3 +27,7 @@ function RezEmote.isScenario()
     end
     return false
 end
+
+function RezEmote.Shutdown()
+    UnregisterEventHandler(SystemData.Events.PLAYER_DEATH, "RezEmote.Rez");
+end

@@ -48,6 +48,8 @@
 		<CallFunction name="RezEmote.Initialize" />
 	</OnInitialize>     
     <OnUpdate/>      
-    <OnShutdown/>
+    <OnShutdown>  
+		<CallFunction name="RezEmote.Shutdown" /> 
+	</OnShutdown>   
 </UiMod>
 </ModuleFile>
