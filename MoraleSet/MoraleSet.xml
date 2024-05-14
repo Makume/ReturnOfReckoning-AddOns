@@ -1,0 +1,149 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+		<Script file="MoraleSet.lua" />
+	</Scripts>
+	<Windows>
+		<CircleImage name="MoraleSetTooltipButton" handleinput="false" layer="popup" textureScale="0.5" numsegments="8">
+			<Size>
+				<AbsPoint x="32" y="32" />
+			</Size>
+			<Windows>
+				<Label name="$parentMoraleName" font="font_default_text" maxchars="128"  wordwrap="false" autoresize="true" sticky="false">
+					<Size>
+						<AbsPoint x="400" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="right" relativePoint="left" relativeTo="$parent">
+							<AbsPoint x="4" y="0" />
+						</Anchor>
+					</Anchors>
+				</Label>
+			</Windows>
+		</CircleImage>
+		<Window name="MoraleSetTooltip">
+			<Size>
+				<AbsPoint x="300" y="75" />
+			</Size>
+			<Windows>
+				<Window name="$parentBackground" inherits="EA_Window_DefaultTooltipBackground">
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+						<Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" />
+					</Anchors>
+				</Window>
+				<Label name="$parentEmptySetText" font="font_default_text_small" wordwrap="true" autoresize="true"  sticky="false">
+					<Size>
+						<AbsPoint x="280" y="30" />
+					</Size>
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="">
+							<AbsPoint x="10" y="10" />
+						</Anchor>
+					</Anchors>
+				</Label>
+				<Label name="$parentActionText" font="font_default_text_small" wordwrap="true" autoresize="true" sticky="false">
+					 <Size>
+						<AbsPoint x="300" y="30" />
+					</Size>
+					<Anchors>
+						<Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="">
+							<AbsPoint x="10" y="-10" />
+						</Anchor>
+						<Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+							<AbsPoint x="-10" y="-10" />
+						</Anchor>
+					</Anchors>
+					<Windows>
+						<FullResizeImage name="$parentLine" inherits="EA_FullResizeImage_TintableSolidBackground" >
+							<Size>
+								<AbsPoint x="280" y="3" />
+							</Size>
+							<Anchors>
+								<Anchor point="topleft" relativePoint="topleft" relativeTo="">
+									<AbsPoint x="0" y="-10" />
+								</Anchor>
+								<Anchor point="topright" relativePoint="topright" relativeTo="">
+									<AbsPoint x="0" y="-10" />
+								</Anchor>
+							</Anchors>
+							<TintColor r="100" g="65" b="50" a="255"/>
+						</FullResizeImage>
+					</Windows>
+					<Color r="175" g="175" b="175"/>
+				</Label>
+			</Windows>
+		</Window>
+		<Button name="MoraleSetMenuButton" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" font="font_default_text" textalign="center">
+			<Size>
+				<AbsPoint x="48" y="48" />
+			</Size>
+			<TextColors>
+				<Normal r="255" g="255" b="255" a="255" />
+				<NormalHighlit r="250" g="213" b="63" a="255" />
+				<Pressed r="250" g="213" b="63" a="255" />
+				<PressedHighlit r="250" g="213" b="63" a="255" />
+				<Disabled r="92" g="92" b="92" a="255" />
+			</TextColors>
+			<TexSlices>
+				<Normal         id="Tactics-Button" />
+				<NormalHighlit  id="Tactics-Button-Rollover" />
+				<Pressed        id="Tactics-Button-Depressed" />
+				<PressedHighlit id="Tactics-Button-Depressed" />
+				<Disabled       id="Tactics-Button-Disabled" />
+			</TexSlices>
+			<TextOffset x="6" y="12" />
+			<EventHandlers>
+				<EventHandler event="OnMouseOver" function="MoraleSet.MenuTooltip" />
+			</EventHandlers>
+		</Button>
+		<FullResizeImage name="MoraleSetComboBoxBackground" handleinput="false" layer="background">
+			<Sizes>
+				<TopLeft x="15" y="15" />
+				<BottomRight x="15" y="15" />
+				<Middle x="68" y="36" />
+			</Sizes>
+			<TexCoords>
+				<TopLeft x="474" y="80" />
+				<TopCenter x="489" y="80" />
+				<TopRight x="638" y="80" />
+				<MiddleLeft x="474" y="95" />
+				<MiddleCenter x="489" y="95" />
+				<MiddleRight x="638" y="95" />
+				<BottomLeft x="474" y="180" />
+				<BottomCenter x="489" y="180" />
+				<BottomRight x="638" y="180" />
+			</TexCoords>
+		</FullResizeImage>
+		<ComboBox name="MoraleSetComboBox" selectedbutton="MoraleSetMenuButton" menubackground="MoraleComboBoxBackground" menuitembutton="MoraleSetMenuButton">
+			<Size>
+				<AbsPoint x="48" y="49" />
+			</Size>
+			<MenuButtonOffset x="0" y="0" />
+		</ComboBox>
+		<! <Window name="MoraleEditor" movable="false"> !>
+		<Window name="MoraleEditor" savesettings="true">
+			<Size>
+				<AbsPoint x="48" y="49" />
+			</Size>
+			<EventHandlers>
+				<EventHandler event="OnInitialize" function="MoraleSet.Initialize" />
+				<EventHandler event="OnShutdown" function="MoraleSet.Shutdown" />
+			</EventHandlers>
+			<Windows>
+				<ComboBox name="$parentSetMenu" inherits="MoraleSetComboBox" layer="overlay" id="9998">
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+							<AbsPoint x="0" y="0" />
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+						<EventHandler event="OnSelChanged" function="MoraleSet.OnSetMenuSelectionChanged" />
+						<EventHandler event="OnMouseOver" function="MoraleSet.OnMouseOverSetMenu" />
+						<EventHandler event="OnLButtonUp" function="MoraleSet.OnLButtonUpSetMenu" />
+						<EventHandler event="OnRButtonUp" function="MoraleSet.OnRButtonUpSetMenu" />
+					</EventHandlers>
+				</ComboBox>
+			</Windows>
+		</Window>
+	</Windows>
+</Interface>
