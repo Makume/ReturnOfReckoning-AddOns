@@ -1,4 +1,4 @@
-# HideActionBarPageselector v1.0.0
+# HideActionBarPageSelector v1.0.0
 
 Hide the actionbar page selector
 

@@ -1,8 +1,8 @@
-if not HideActionBarPageselector then 
-	HideActionBarPageselector = {} 
+if not HideActionBarPageSelector then 
+	HideActionBarPageSelector = {} 
 end
 
-function HideActionBarPageselector.Initialize()
+function HideActionBarPageSelector.Initialize()
 	local oldActionBarPageSelectorCreate = ActionBarPageSelector.Create
 	ActionBarPageSelector.Create = function(self, ...)
         --oldActionBarPageSelectorCreate(self, ...)

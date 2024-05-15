@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ModuleFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-<UiMod name="HideActionBarPageselector" version="1.0.0" date="05/15/2024" >
+<UiMod name="HideActionBarPageSelector" version="1.0.0" date="05/15/2024" >
 	<Author name="Psychoxell (Adeptha)" email="" />
 	<Description text="Hide the actionbar page selector" />
 	<VersionSettings gameVersion="1.4.8"/>
@@ -39,10 +39,10 @@
 		<Dependency name="EA_ActionBars" />
 	</Dependencies>
 	<Files>
-		<File name="HideActionBarPageselector.lua" />
+		<File name="HideActionBarPageSelector.lua" />
 	</Files>
 	<OnInitialize>         
-      <CallFunction name="HideActionBarPageselector.Initialize" />      
+      <CallFunction name="HideActionBarPageSelector.Initialize" />      
     </OnInitialize>      
     <OnUpdate/>      
     <OnShutdown/>   
