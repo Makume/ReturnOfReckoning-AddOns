@@ -12,7 +12,7 @@
 > [!TIP]
 > # Support
 > 
-> If you want to support me you can buy me a [:coffee: coffee :coffee:](https://buymeacoffee.com/makume)
+> If you want to support me you can buy me a [:coffee: coffee :coffee:](https://buymeacoffee.com/makume) or donate via [:coin: Paypal :coin:](https://www.paypal.me/makume)
 >
 > And special thanks to my guild [Bene Tleilax](https://discord.gg/F7zVXDuaVA)
 > 
