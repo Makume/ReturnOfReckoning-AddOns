@@ -9,6 +9,11 @@
 > Select the AddOn you want. Click on the folder. Then click on the zip file and download it.
 > After that you have to extract the zip file and copy the content to your game AddOn folder.
 
+> [!TIP]
+> # Support
+> 
+> If you want to support me you can buy me a [:coffee: coffee :coffee:](https://buymeacoffee.com/makume)
+
 > [!NOTE]
 > # Upcoming Changes
 >
