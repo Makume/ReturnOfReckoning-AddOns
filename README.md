@@ -18,7 +18,7 @@
 > # Upcoming Changes
 >
 > ### SellPrice
-> * Show Auctionhouse Pirces (min/max/avg)
+> * Show auctionhouse prices (min/max/avg)
 > 
 > ### Enemy
 > * Extend "Marker" with a visual list where you cann add/edit/delete entries
