@@ -17,6 +17,8 @@
 > [!NOTE]
 > # Upcoming Changes
 >
-> ### AddOn Name
-> * Change 1
-> * Change 2
+> ### SellPrice
+> * Show Auctionhouse Pirces (min/max/avg)
+> 
+> ### Enemy
+> * Extend "Marker" with a visual list where you cann add/edit/delete entries
