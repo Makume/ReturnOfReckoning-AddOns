@@ -28,3 +28,9 @@
 > 
 > ### Enemy
 > * Extend "Marker" with a visual list where you cann add/edit/delete entries
+> 
+> ### WarBoard_Session
+> * Icon based vizualisation
+>
+> ### WarBoard_Clock
+> * Set primary clock
