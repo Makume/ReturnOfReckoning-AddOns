@@ -6,5 +6,5 @@
 > [!TIP]
 > # How to install the AddOns
 > 
-> Select the AddOn you want. Click on the folder. Then click on the ZIP file and download it.
-> After that you have to extract the zip file to your Addon folder.
+> Select the AddOn you want. Click on the folder. Then click on the zip file and download it.
+> After that you have to extract the zip file and copy the content to your game AddOn folder.
