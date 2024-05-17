@@ -27,7 +27,7 @@
 > * Show auctionhouse prices (min/max/avg)
 > 
 > ### Enemy
-> * Extend "Marker" with a visual list where you cann add/edit/delete entries
+> * Extend "Marker" with a visual list where you cann add or delete entries
 >
 > ### WarBoard_Clock
 > * Set primary clock
