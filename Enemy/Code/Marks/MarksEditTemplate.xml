@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Code\Marks\MarksEditTemplate.lua" />
+    </Scripts>
+	<Windows>
+		<Window name="EnemyMarkEntryDialog" movable="true" inherits="EA_Window_Default">
+			<Size>
+				<AbsPoint x="660" y="720" />
+			</Size>
+			<Anchors>
+				<Anchor point="center" relativePoint="center" relativeTo="Root">
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+			</Anchors>			
+			<Windows>
+				<!-- Init -->
+				<Window name="$parentBackground" inherits="EA_Window_DefaultFrame">
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft">
+							<AbsPoint x="0" y="32" />
+						</Anchor>
+						<Anchor point="bottomright" relativePoint="bottomright" />
+					</Anchors>
+				</Window>				
+				<Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />			
+				<Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="Enemy.MarksUI_MarkEntryDialog_Hide" />
+					</EventHandlers>
+				</Button>
+				<!-- Content panel -->
+                <!-- ListBox for list -->
+                <ListBox name="$parentList" color="155, 255, 155, 0"  scrollbar="ScenarioSummaryVertScroll" rowdef="EnemyMarkEntryDialogListRow" visiblerows="22" rowcount="1150" rowspacing="0">
+                <Size>
+                    <AbsPoint x="650" y="500" />
+                </Size>  
+                <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                    <AbsPoint x="10" y="5"/>
+                    </Anchor>
+                    <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                    <AbsPoint x="-8" y="-60"/>
+                    </Anchor>
+                </Anchors>
+                    <EventHandlers>
+                            <EventHandler event="OnLButtonUp" function="Enemy.OnLButtonUpMarkEntry"/>    
+                            <EventHandler event="OnRButtonUp" function="Enemy.OnLButtonUpMarkEntry"/>         	
+                    </EventHandlers>  
+                    <ListData table="Enemy.MarksEditListData" populationfunction="">
+                        <ListColumns>
+                            <ListColumn windowname="Name" variable="name" format="wstring" />
+                        </ListColumns>
+                    </ListData>
+                </ListBox>
+				<!-- Bottom panel -->
+				<Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background">
+					<Size>
+						<AbsPoint x="0" y="65" />
+					</Size>
+				</Window>				
+				<Button name="$parentAddButton" inherits="EA_Button_DefaultResizeable">
+					<Anchors>
+						<Anchor point="bottomleft" relativePoint="bottomleft">
+							<AbsPoint x="10" y="-10" />
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="Enemy.MarksUI_MarkEntryDialog_Add" />
+					</EventHandlers>
+				</Button>
+				<Button name="$parentOkButton" inherits="EA_Button_DefaultResizeable">
+					<Anchors>
+						<Anchor point="bottomright" relativePoint="bottomright">
+							<AbsPoint x="-150" y="-10" />
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="Enemy.MarksUI_MarkEntryDialog_Ok" />
+					</EventHandlers>
+				</Button>
+				<Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable">
+					<Anchors>
+						<Anchor point="bottomright" relativePoint="bottomright">
+							<AbsPoint x="-10" y="-10" />
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="Enemy.MarksUI_MarkEntryDialog_Hide" />
+					</EventHandlers>
+				</Button>
+			</Windows>			
+			<EventHandlers>
+				<EventHandler event="OnShown" function="WindowUtils.OnShown" />
+				<EventHandler event="OnHidden" function="WindowUtils.OnHidden" />
+				<EventHandler event="OnKeyEscape" function="Enemy.MarksUI_MarkEntryDialog_Hide" />
+			</EventHandlers>
+		</Window>
+	    <Window name="EnemyMarkEntryDialogListRow">
+			<Size>
+				<AbsPoint x="620" y="28" />
+			</Size>
+			<Windows>
+				<FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground" handleinput="false">
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+						<Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" />
+					</Anchors>
+				</FullResizeImage>
+				<Label name="$parentName" inherits="GuildWindowSectionTitle" font="font_chat_text" handleinput="false" layer="popup">
+					<Size>
+						<AbsPoint x="620" y="28" />
+					</Size>
+					<Anchors>
+						<Anchor>
+							<AbsPoint x="0" y="3" />
+						</Anchor>
+					</Anchors>
+				</Label>
+			</Windows>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="Enemy.OnMouseOverMarkEntry"/>  			
+            </EventHandlers>  
+		</Window>
+		<Window name="AddMarkPlayer" movable="false" layer="popup"  savesettings="false" >
+            <Size>
+                <AbsPoint x="400" y="150" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="">
+                    <AbsPoint x="0" y="325" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_BlackTransparent" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" >
+                            <AbsPoint x="0" y="4" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentFrame" inherits="EA_FullResizeImage_DefaultFrame" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" />
+                        <Anchor point="bottomleft" relativePoint="bottomleft" />
+                    </Anchors>
+                </FullResizeImage>  
+
+                <Label name="$parentLabel" inherits="DefaultWindowSubTitle" maxchars="256" textalign="center">
+                    <Size>
+                        <AbsPoint x="400" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <EditBox name="$parentText" inherits="EA_EditBox_DefaultFrame" maxchars="20" taborder="1" >
+                    <Size>
+                        <AbsPoint x="300" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentLabel" >
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnKeyEnter" function="Enemy.OnAddMarkPlayerAccept" />
+                        <EventHandler event="OnKeyEscape" function="Enemy.OnCancelAddMarkPlayer" />
+                    </EventHandlers>
+                </EditBox>
+                <Button name="$parentOKButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText">
+                            <AbsPoint x="15" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="Enemy.OnAddMarkPlayerAccept"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentOKButton">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="Enemy.OnCancelAddMarkPlayer"/>
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+        <Window name="EditMarkPlayer" movable="false" layer="popup"  savesettings="false" >
+            <Size>
+                <AbsPoint x="400" y="150" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="">
+                    <AbsPoint x="0" y="325" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_BlackTransparent" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" >
+                            <AbsPoint x="0" y="4" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentFrame" inherits="EA_FullResizeImage_DefaultFrame" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" />
+                        <Anchor point="bottomleft" relativePoint="bottomleft" />
+                    </Anchors>
+                </FullResizeImage>  
+
+                <Label name="$parentLabel" inherits="DefaultWindowSubTitle" maxchars="256" textalign="center">
+                    <Size>
+                        <AbsPoint x="400" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <EditBox name="$parentText" inherits="EA_EditBox_DefaultFrame" maxchars="20" taborder="1" >
+                    <Size>
+                        <AbsPoint x="300" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentLabel" >
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnKeyEnter" function="Enemy.OnEditMarkPlayerAccept" />
+                        <EventHandler event="OnKeyEscape" function="Enemy.OnCancelEditMarkPlayer" />
+                    </EventHandlers>
+                </EditBox>
+
+                <Button name="$parentOKButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText">
+                            <AbsPoint x="15" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="Enemy.OnEditMarkPlayerAccept"/>
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentOKButton">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="Enemy.OnCancelEditMarkPlayer"/>
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+	</Windows>
+</Interface>
