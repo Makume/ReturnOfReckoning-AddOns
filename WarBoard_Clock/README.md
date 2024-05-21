@@ -1,3 +1,7 @@
+> [!TIP]
+> # Download
+> Download the zip-file [here](https://github.com/Makume/ReturnOfReckoning-AddOns/blob/main/WarBoard_Clock/WarBoard_Clock.zip)
+
 > [!NOTE]
 > # Changelog
 > 
