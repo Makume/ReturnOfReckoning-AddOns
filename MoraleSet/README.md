@@ -1,3 +1,7 @@
+> [!TIP]
+> # Download
+> Download the zip-file [here](https://github.com/Makume/ReturnOfReckoning-AddOns/blob/main/MoraleSet/MoraleSet.zip)
+
 > [!NOTE]
 > # Changelog
 > 
