@@ -3,7 +3,7 @@
 > 
 > | Version  | Description |
 > | ------------- | ------------- |
-> | 1.0.0  | automatic deactivation of the combat log |
+> | 1.0.0  | Automatic deactivation of the combat log |
 
 
 > [!NOTE]
