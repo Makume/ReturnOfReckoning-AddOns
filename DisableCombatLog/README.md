@@ -11,8 +11,8 @@
 > 
 > This AddOn is doing the same as when you write the following in the chat:
 > 
-> /script TextLogSetEnabled("Combat", false)
+> `/script TextLogSetEnabled("Combat", false)`
 > 
 > If you wish to enable to the combat log again, disable the AddOn or write the following in the chat:
 > 
-> /script TextLogSetEnabled ("Combat", true)
+> `/script TextLogSetEnabled ("Combat", true)`
