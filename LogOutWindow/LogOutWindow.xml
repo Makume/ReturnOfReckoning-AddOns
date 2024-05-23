@@ -1,0 +1,71 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+ 	<Scripts>
+		<Script file="LogOutWindow.lua" />
+	</Scripts>
+	<Windows>
+		<Label name="EA_Label_Death" font="font_heading_tiny_no_shadow" textalign="center" wordwrap="true" layer="popup">
+			<Size>
+				<AbsPoint x="260" y="30" />
+			</Size>
+			<Color r="0" g="0" b="0" />
+		</Label>
+		<Window name="LogOutWindow" layer="secondary" movable="false" savesettings="false">
+			<Size>
+				<AbsPoint x="437" y="461" />
+			</Size>
+			<Anchors>
+				<Anchor point="center" relativePoint="center" >
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+			</Anchors>
+			<Windows>
+				<DynamicImage name="$parentBackground" layer="background" handleinput="false" texture="EA_Death01_d5" slice="MainWindow">
+					<Size>
+						<AbsPoint x="437" y="461" />
+					</Size>
+				</DynamicImage>
+				<Label name="$parentType" inherits="EA_Label_Death" font="font_heading_20pt_no_shadow">
+					<Anchors>
+						<Anchor point="top" relativePoint="top" >
+							<AbsPoint x="0" y="68" />
+						</Anchor>
+					</Anchors>
+				</Label>
+				<Button name="$parentButton" inherits="EA_Button_Default" font="font_heading_20pt_no_shadow" textalign="center" id="2">
+					<Size>
+						<AbsPoint x="187" y="51" />
+					</Size>
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="LogOutWindow.Cancel" />
+					</EventHandlers>
+					<Anchors>
+						<Anchor point="center" relativePoint="center">
+							<AbsPoint x="-2" y="107" />
+						</Anchor>
+					</Anchors>
+					<TexCoords>
+						<NormalHighlit texture="EA_Death01_d5" x="123" y="461" />
+						<Pressed texture="EA_Death01_d5" x="310" y="461" />
+						<PressedHighlit texture="EA_Death01_d5" x="310" y="461" />
+					</TexCoords>
+					<TextColors>
+						<Normal             r="0" g="0" b="0" />
+						<NormalHighlit      r="0" g="0" b="0" />
+						<Pressed            r="0" g="0" b="0" />
+						<PressedHighlit     r="0" g="0" b="0" />
+						<Disabled           r="0" g="0" b="0" />
+						<DisabledPressed    r="0" g="0" b="0" />
+					</TextColors>
+				</Button>
+				<Label name="$parentTimerText" inherits="EA_Label_Death" font="font_alert_outline_small">
+					<Anchors>
+						<Anchor point="center" relativePoint="center">
+							<AbsPoint x="-2" y="-22" />
+						</Anchor>
+					</Anchors>
+					<Color r="255" g="255" b="255" />
+				</Label>
+			</Windows>
+		</Window>
+	</Windows>
+</Interface>
