@@ -460,7 +460,7 @@ function Enemy.MarksUI_EnemyMarkIcon_OnRButtonUp (flags)
 		EA_Window_ContextMenu.CreateContextMenu (SystemData.MouseOverWindow.name)
 
 	    EA_Window_ContextMenu.AddMenuItem (L"Edit", Enemy.MarksUI_EnemyMarkIcon_Edit, false, true)
-			if (template.permanent) then
+		if (template.permanent) then
 			EA_Window_ContextMenu.AddMenuItem(L"Edit Entries", Enemy.MarksUI_EnemyMarkIcon_EditEntries, false, true)
 		end
 	    EA_Window_ContextMenu.AddMenuItem (L"Copy to new", Enemy.MarksUI_EnemyMarkIcon_Copy, false, true)
@@ -489,7 +489,12 @@ end
 
 function Enemy.MarksUI_EnemyMarkIcon_EditEntries()
 	g.contextMenuTemplate:EditEntry(function(template)
-		Enemy.MarksUI_EnemyMarksWindow_Update()
+		for k,v in pairs(Enemy.Settings.markTemplates) do
+			if template.id == v.id then
+				Enemy.Settings.markTemplates[k].permanentTargets = Enemy.clone(template.permanentTargets)
+				return
+			end
+		end
 	end)
 end
 

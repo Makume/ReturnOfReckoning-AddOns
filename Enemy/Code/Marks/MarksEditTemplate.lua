@@ -1,14 +1,15 @@
 if not Enemy.MarksEditListData then 
 	Enemy.MarksEditListData = {} 
 end
+
 local _index = 0
 local ConfigData = {}
 local WindowName = "EnemyMarkEntryDialog"
 local AddWindowName = "AddMarkPlayer"
 local EditWindowName = "EditMarkPlayer"
 
-function Enemy.MarksUI_MarkEditEntryDialog_Open(template)
-	if (DoesWindowExist()) then
+function Enemy.MarksUI_MarkEditEntryDialog_Open(template, onOkCallback)
+	if (DoesWindowExist(WindowName)) then
 		DestroyWindow(WindowName)
 	end
 	CreateWindow(WindowName, false)
@@ -16,19 +17,22 @@ function Enemy.MarksUI_MarkEditEntryDialog_Open(template)
 	ButtonSetText(WindowName.."AddButton", L"Add Entry")
 	ButtonSetText(WindowName.."OkButton", L"OK")
 	ButtonSetText(WindowName.."CancelButton", L"Cancel")
-	ConfigData = template
+	ConfigData = Enemy.clone(template)
+	ConfigData.onOkCallback = onOkCallback
 	InitMarksEditListData()
 	WindowSetShowing(WindowName, true)
 end
 
 function Enemy.OnLButtonUpMarkEntry()	
 	_index = ListBoxGetDataIndex(WindowName.."List", WindowGetId(SystemData.MouseOverWindow.name))
-	Enemy.ColorMarkEntry()
-	EA_Window_ContextMenu.CreateContextMenu(SystemData.MouseOverWindow.name, EA_Window_ContextMenu.CONTEXT_MENU_1, towstring(Enemy.MarksEditListData[_index].name))
-	EA_Window_ContextMenu.AddMenuDivider ()
-	EA_Window_ContextMenu.AddMenuItem(L"Edit", Enemy.MarksUI_MarkEditEntryDialog_Edit, false, true, EA_Window_ContextMenu.CONTEXT_MENU_1)
-	EA_Window_ContextMenu.AddMenuItem(L"Delete", Enemy.MarksUI_MarkEditEntryDialog_Delete, false, true, EA_Window_ContextMenu.CONTEXT_MENU_1)
-	EA_Window_ContextMenu.Finalize ()
+	if _index ~= nil then
+		Enemy.ColorMarkEntry()
+		EA_Window_ContextMenu.CreateContextMenu(SystemData.MouseOverWindow.name, EA_Window_ContextMenu.CONTEXT_MENU_1, towstring(Enemy.MarksEditListData[_index].name))
+		EA_Window_ContextMenu.AddMenuDivider()
+		EA_Window_ContextMenu.AddMenuItem(L"Edit", Enemy.MarksUI_MarkEditEntryDialog_Edit, false, true, EA_Window_ContextMenu.CONTEXT_MENU_1)
+		EA_Window_ContextMenu.AddMenuItem(L"Delete", Enemy.MarksUI_MarkEditEntryDialog_Delete, false, true, EA_Window_ContextMenu.CONTEXT_MENU_1)
+		EA_Window_ContextMenu.Finalize()
+	end
 end
 
 function Enemy.OnMouseOverMarkEntry()
@@ -53,6 +57,9 @@ function Enemy.ColorMarkEntry()
 end
 
 function Enemy.MarksUI_MarkEntryDialog_Ok()
+	if (ConfigData.onOkCallback) then
+		ConfigData.onOkCallback(ConfigData)
+	end
 	Enemy.MarksUI_MarkEntryDialog_Hide()
 end
 
@@ -78,11 +85,11 @@ function Enemy.MarksUI_MarkEditEntryDialog_Delete()
 	if (_index == 0) then 
 		return
 	end
-	ConfigData.permanentTargets = Enemy.MakePermanentTargetsCopy()
+	ConfigData.permanentTargets = Enemy.clone(Enemy.MakePermanentTargetsCopy())
 	InitMarksEditListData()
 end
 
-function Enemy.MarksUI_MarkEntryDialog_Hide ()
+function Enemy.MarksUI_MarkEntryDialog_Hide()
 	WindowSetShowing(WindowName, false)
 end
 
@@ -104,12 +111,14 @@ function InitMarksEditListData()
 	Enemy.MarksEditListData = {}
 	local i = 1
 	local row_window_name = L""
-	for k,v in pairs(ConfigData.permanentTargets) do
-		table.insert(_DisplayOrder, i)
-		table.insert(Enemy.MarksEditListData, { name = towstring(k)})
-		row_window_name = towstring(WindowName)..L"ListRow"..towstring(i)
-		WindowSetShowing(tostring(row_window_name..L"Background"), false)		
-		i = i + 1
+	if ConfigData.permanentTargets ~= nil then
+		for k,v in pairs(ConfigData.permanentTargets) do
+			table.insert(_DisplayOrder, i)
+			table.insert(Enemy.MarksEditListData, { name = towstring(k)})
+			row_window_name = towstring(WindowName)..L"ListRow"..towstring(i)
+			WindowSetShowing(tostring(row_window_name..L"Background"), false)		
+			i = i + 1
+		end
 	end
 	ListBoxSetDisplayOrder(WindowName.."List", _DisplayOrder)
 end	
@@ -143,7 +152,7 @@ function Enemy.OnEditMarkPlayerAccept()
 		return
 	end
     Enemy.OnCancelEditMarkPlayer()
-	ConfigData.permanentTargets = Enemy.MakePermanentTargetsCopy()
+	ConfigData.permanentTargets = Enemy.clone(Enemy.MakePermanentTargetsCopy())
 	ConfigData.permanentTargets[towstring(NewPlayerName)] = false
 	InitMarksEditListData()
 end
