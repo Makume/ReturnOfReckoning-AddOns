@@ -1,7 +1,7 @@
-if not DisableCombatLog then 
-	DisableCombatLog = {} 
+if not DisableCombatLog then
+	DisableCombatLog = {}
 end
 
 function DisableCombatLog.OnInitialize()
-    TextLogSetEnabled ("Combat", false)    
+	TextLogSetEnabled ("Combat", false)
 end
