@@ -25,3 +25,4 @@
 > | ------------- | ------------- |
 > | SellPrice  | Show auctionhouse prices (min/max/avg) |
 > | WarBoard_Clock  | Set primary clock  |
+> | Enemy  | Context menu entry for adding fast via Enemy frame or chat  |
