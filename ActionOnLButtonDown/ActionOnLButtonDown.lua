@@ -1,5 +1,5 @@
 if not ActionOnLButtonDown then 
-	ActionOnLButtonDown = {} 
+    ActionOnLButtonDown = {} 
 end
 
 function ActionOnLButtonDown.OnInitialize()
