@@ -3,6 +3,7 @@ if not ActionOnLButtonDown then
 end
 
 function ActionOnLButtonDown.OnInitialize()
+    ActionButton.OnRButtonDown = ActionButton.OnLButtonDown
     ActionButton.OnLButtonDown = ActionButton.OnLButtonUp
-    ActionButton.OnLButtonUp = nil
+    ActionButton.OnLButtonUp = nil    
 end
