@@ -19,7 +19,7 @@ function Enemy.MarksUI_MarkEditEntryDialog_Open(template, onOkCallback)
 	ButtonSetText(WindowName.."CancelButton", L"Cancel")
 	ConfigData = Enemy.clone(template)
 	ConfigData.onOkCallback = onOkCallback
-	InitMarksEditListData()
+	Enemy.InitMarksEditListData()
 	WindowSetShowing(WindowName, true)
 end
 
@@ -86,7 +86,7 @@ function Enemy.MarksUI_MarkEditEntryDialog_Delete()
 		return
 	end
 	ConfigData.permanentTargets = Enemy.clone(Enemy.MakePermanentTargetsCopy())
-	InitMarksEditListData()
+	Enemy.InitMarksEditListData()
 end
 
 function Enemy.MarksUI_MarkEntryDialog_Hide()
@@ -105,7 +105,7 @@ function Enemy.MarksUI_MarkEntryDialog_Add()
 	WindowSetShowing(AddWindowName, true)
 end
 
-function InitMarksEditListData()
+function Enemy.InitMarksEditListData()
 	_DisplayOrder = {}
 	local shtcount = 1
 	Enemy.MarksEditListData = {}
@@ -120,8 +120,13 @@ function InitMarksEditListData()
 			i = i + 1
 		end
 	end
+	table.sort(Enemy.MarksEditListData, Enemy.SortTable)
 	ListBoxSetDisplayOrder(WindowName.."List", _DisplayOrder)
 end	
+
+function Enemy.SortTable(a, b)
+	return string.lower(tostring(a.name)) < string.lower(tostring(b.name))
+end
 
 function Enemy.OnAddMarkPlayerAccept()
 	local NewPlayerName = TextEditBoxGetText(AddWindowName.."Text")
@@ -130,7 +135,7 @@ function Enemy.OnAddMarkPlayerAccept()
     end
 	Enemy.OnCancelAddMarkPlayer()
 	ConfigData.permanentTargets[towstring(NewPlayerName)] = false   
-	InitMarksEditListData()
+	Enemy.InitMarksEditListData()
 end
 
 function Enemy.OnCancelAddMarkPlayer()
@@ -154,7 +159,7 @@ function Enemy.OnEditMarkPlayerAccept()
     Enemy.OnCancelEditMarkPlayer()
 	ConfigData.permanentTargets = Enemy.clone(Enemy.MakePermanentTargetsCopy())
 	ConfigData.permanentTargets[towstring(NewPlayerName)] = false
-	InitMarksEditListData()
+	Enemy.InitMarksEditListData()
 end
 
 function Enemy.MakePermanentTargetsCopy()
