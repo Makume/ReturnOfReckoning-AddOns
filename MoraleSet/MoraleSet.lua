@@ -330,6 +330,8 @@ function MoraleSet.Update()
 	if (Abilities == 0) then
 		WindowSetShowing(MoraleSetMenu.windowName,false);
 		return;
+	else
+		WindowSetShowing(MoraleSetMenu.windowName,true);
 	end
 
 	local serverName = WStringToString(SystemData.Server.Name);
