@@ -321,10 +321,9 @@ function MoraleSet.Initialize ()
 	MoraleSet.Update()
 end
 
-
 function MoraleSet.Update()
 	local Abilities = 0;
-	for n in pairs(GetAbilityTable(GameData.AbilityType.MORALE)) do 
+	for n in pairs(Player.GetAbilityTable(GameData.AbilityType.MORALE)) do 
 		Abilities = Abilities + 1 
 	end
 	if (Abilities == 0) then
@@ -506,6 +505,7 @@ function MoraleSet.UpdateSet()
 	if MoraleSet.switchingSet then
 		return;
 	end
+
 	local _, abilityId;
 	for i = 1, GameData.NUM_MORALE_LEVELS do
 		_, abilityId = GetMoraleBarData(i);
@@ -517,4 +517,3 @@ function MoraleSet.UpdateSet()
 		end
 	end
 end
-
