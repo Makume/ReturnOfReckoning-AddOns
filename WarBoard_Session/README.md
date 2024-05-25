@@ -7,5 +7,5 @@
 > 
 > | Version  | Description |
 > | ------------- | ------------- |
-> | 0.7.0  | Show additional informations for Gold and War Crests |
+> | 0.7.0  | Show additional informations for Gold and War Crests <br/>![Version 0.7.0](https://github.com/Makume/ReturnOfReckoning-AddOns/blob/main/WarBoard_Session/(Images)/Version%200.7.0.png)|
 > | 0.6.0  | Base version from [WarBoard_Session](https://tools.idrinth.de/addons/warboard_session/) |
