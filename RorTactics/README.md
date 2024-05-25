@@ -7,7 +7,7 @@
 > 
 > | Version  | Description |
 > | ------------- | ------------- |
-> | 1.0.0  | The AddOn RoRTactis hide the unused tactic slots to make the ui smoother |
+> | 1.0.0  | The AddOn RoRTactis hide the unused tactic slots to make the ui smoother <br/>!From:[From](https://github.com/Makume/ReturnOfReckoning-AddOns/blob/main/RorTactics/(Images)/From.png)<br/>!To:[To](https://github.com/Makume/ReturnOfReckoning-AddOns/blob/main/RorTactics/(Images)/To.png)|
 
 > [!NOTE]
 > # Information
