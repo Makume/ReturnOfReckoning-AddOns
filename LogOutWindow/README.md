@@ -7,4 +7,4 @@
 > 
 > | Version  | Description |
 > | ------------- | ------------- |
-> | 1.0.0  | A dialog for the "Log Out" / "Exit Game" process |
+> | 1.0.0  | A dialog for the "Log Out" / "Exit Game" process <br/>![LogOut](https://github.com/Makume/ReturnOfReckoning-AddOns/blob/main/LogOutWindow/(Images)/LogOut.png)|
