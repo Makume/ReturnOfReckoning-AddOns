@@ -310,8 +310,9 @@ function MoraleSet.Initialize ()
 		
 	-- register events
 	WindowRegisterEventHandler("MoraleEditor", SystemData.Events.PLAYER_COMBAT_FLAG_UPDATED, "MoraleSet.UpdateCombatFlag");
-	WindowRegisterEventHandler("MoraleEditor", SystemData.Events.PLAYER_MORALE_BAR_UPDATED, "MoraleSet.UpdateSet"); 
+	WindowRegisterEventHandler("MoraleEditor", SystemData.Events.PLAYER_MORALE_BAR_UPDATED, "MoraleSet.Update"); 
 	WindowRegisterEventHandler("MoraleEditor", SystemData.Events.PLAYER_NEW_ABILITY_LEARNED, "MoraleSet.NewAbilityLearned");
+	WindowRegisterEventHandler("MoraleEditor", SystemData.Events.LOADING_END, "MoraleSet.Update");
 
 	-- initialize settings
 	if not MoraleSetData then
@@ -329,7 +330,7 @@ function MoraleSet.Update()
 	if (Abilities == 0) then
 		WindowSetShowing(MoraleSetMenu.windowName,false);
 		return;
-	else
+	 else
 		WindowSetShowing(MoraleSetMenu.windowName,true);
 	end
 
@@ -365,7 +366,7 @@ function MoraleSet.Update()
 				-- change morales if needed
 				if MoraleSet.charData.linkedToTactics then
 					if currentSelection > 0 and (currentSelection - 1) ~= MoraleSet.charData.currentSet then
-						ComboBoxSetSelectedMenuItem (MoraleSetMenu.windowName, currentSelection);
+						ComboBoxSetSelectedMenuItem(MoraleSetMenu.windowName, currentSelection);
 						MoraleSet.OnSetMenuSelectionChanged(currentSelection);
 					end
 				end
@@ -399,6 +400,7 @@ function MoraleSet.Shutdown ()
 	WindowUnregisterEventHandler( "MoraleEditor", SystemData.Events.PLAYER_COMBAT_FLAG_UPDATED);
 	WindowUnregisterEventHandler( "MoraleEditor", SystemData.Events.PLAYER_MORALE_BAR_UPDATED);
 	WindowUnregisterEventHandler("MoraleEditor", SystemData.Events.PLAYER_NEW_ABILITY_LEARNED, "MoraleSet.NewAbilityLearned");
+	WindowUnregisterEventHandler("MoraleEditor", SystemData.Events.LOADING_END, "MoraleSet.Update");
 	if LayoutEditor then
 		LayoutEditor.UnregisterWindow("MoraleEditor");
 	end
@@ -505,7 +507,10 @@ function MoraleSet.UpdateSet()
 	if MoraleSet.switchingSet then
 		return;
 	end
-
+	if MoraleSet.charData == nil then
+		return
+	end
+	MoraleSet.charData.currentSet = {}
 	local _, abilityId;
 	for i = 1, GameData.NUM_MORALE_LEVELS do
 		_, abilityId = GetMoraleBarData(i);
