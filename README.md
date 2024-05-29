@@ -26,6 +26,5 @@
 >
 > | Addon  | Description |
 > | ------------- | ------------- |
-> | SellPrice  | Show auctionhouse prices (min/max/avg) |
 > | WarBoard_Clock  | Set primary clock  |
 > | DisableCombatLog  | Add toggler |
