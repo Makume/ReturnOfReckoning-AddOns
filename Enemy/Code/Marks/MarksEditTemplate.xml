@@ -26,12 +26,12 @@
 				<Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />			
 				<Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
 					<EventHandlers>
-						<EventHandler event="OnLButtonUp" function="Enemy.MarksUI_MarkEntryDialog_Hide" />
+						<EventHandler event="OnLButtonUp" function="Enemy.MarksUI_MarkEntryDialog_Ok" />
 					</EventHandlers>
 				</Button>
 				<!-- Content panel -->
                 <!-- ListBox for list -->
-                <ListBox name="$parentList" color="155, 255, 155, 0"  scrollbar="ScenarioSummaryVertScroll" rowdef="EnemyMarkEntryDialogListRow" visiblerows="22" rowcount="1150" rowspacing="0">
+                <ListBox name="$parentList" color="155, 255, 155, 0"  scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EnemyMarkEntryDialogListRow" visiblerows="22" rowcount="1150" rowspacing="0">
                 <Size>
                     <AbsPoint x="650" y="500" />
                 </Size>  
@@ -47,7 +47,7 @@
                             <EventHandler event="OnLButtonUp" function="Enemy.OnLButtonUpMarkEntry"/>    
                             <EventHandler event="OnRButtonUp" function="Enemy.OnLButtonUpMarkEntry"/>         	
                     </EventHandlers>  
-                    <ListData table="Enemy.MarksEditListData" populationfunction="">
+                    <ListData table="Enemy.MarksEditListData" populationfunction="Enemy.MarksEditListData_OnEffectFiltersListPopulate">
                         <ListColumns>
                             <ListColumn windowname="Name" variable="name" format="wstring" />
                         </ListColumns>
@@ -119,7 +119,7 @@
 				</Label>
 			</Windows>
             <EventHandlers>
-                <EventHandler event="OnMouseOver" function="Enemy.OnMouseOverMarkEntry"/>  			
+                <EventHandler event="OnMouseOver" function="Enemy.OnMouseOverMarkEntry"/>
             </EventHandlers>  
 		</Window>
 		<Window name="AddMarkPlayer" movable="false" layer="popup"  savesettings="false" >
