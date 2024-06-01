@@ -18,7 +18,6 @@ function LogOutWindow.OnInitialize()
 	CreateWindow(WindowName, true)
 	LabelSetText(WindowName.."TimerText", L"")
 	ButtonSetText(WindowName.."Button", GetString(StringTables.Default.LABEL_CANCEL))
-	ButtonSetDisabledFlag(WindowName.."Button", disabled)
 	WindowSetShowing(WindowName, false)
 end 
 
@@ -36,7 +35,7 @@ function LogOutWindow.ExitGame()
 end
 
 function LogOutWindow.SetType(Type)
-	RegisterEventHandler(SystemData.Events.UPDATE_PROCESSED, "LogOutWindow.UpdateProcess")
+	WindowRegisterEventHandler(WindowName, SystemData.Events.UPDATE_PROCESSED, "LogOutWindow.UpdateProcess")
 	local Text = L""
 	if Type == 1 then
 		Text = GetString(StringTables.Default.LABEL_EXIT_GAME)
@@ -62,13 +61,11 @@ function LogOutWindow.Cancel()
 end 
 
 function LogOutWindow.Tick()
-	local Range = 0
 	local _, filterId, msg = TextLogGetEntry("System", TextLogGetNumEntries("System")-1) 
 	if msg ~= PO_Msg then
 		PO_Msg = msg
 		if msg == GetFormatStringFromTable("Hardcoded", 456, {20}) then	
 			NewTime = .5
-			Range = 0
 			LogOutWindow.UpdateLabel()
 			LabelSetTextColor(WindowName.."TimerText", 255, 255, 255)
 			WindowSetShowing(WindowName, true)
@@ -77,15 +74,12 @@ function LogOutWindow.Tick()
 			end					
 		elseif msg == GetFormatStringFromTable("Hardcoded", 456, {15}) then	
 			NewTime = 5
-			Range = 5
 			LogOutWindow.UpdateLabel()
 		elseif msg == GetFormatStringFromTable("Hardcoded", 456, {10}) then	
 			NewTime = 10
-			Range = 10
 			LogOutWindow.UpdateLabel()
 		elseif msg == GetFormatStringFromTable("Hardcoded", 456, {5}) then		
 			NewTime = 15
-			Range = 15
 			LogOutWindow.UpdateLabel()
 			LabelSetTextColor(WindowName.."TimerText", 255, 0, 0)			
 		elseif msg == GetStringFromTable("Hardcoded", 457) then	
@@ -93,13 +87,11 @@ function LogOutWindow.Tick()
 				PlaySound(LogOutWindow.settings.sounds.cancel)
 			end
 			WindowSetShowing(WindowName, false)
-			UnRegisterEventHandler(SystemData.Events.UPDATE_PROCESSED, "LogOutWindow.UpdateProcess")
+			WindowUnregisterEventHandler(WindowName, SystemData.Events.UPDATE_PROCESSED)
 			return
 		end
 	end
-	--if math.floor(NewTime) ~= Range and math.floor(NewTime) < Range + 5 then
-		LogOutWindow.UpdateLabel()
-	--end
+	LogOutWindow.UpdateLabel()
 end
 
 function LogOutWindow.UpdateLabel()
