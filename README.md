@@ -27,4 +27,8 @@
 > | Addon  | Description |
 > | ------------- | ------------- |
 > | WarBoard_Clock  | Set primary clock  |
-> | DisableCombatLog  | Add toggler |
+> | WarBoard_DisableCombatLog  | Add Toggler fpr the AddOn DisableCombatLog |
+> | OptOut  | Auto OptOut in Public Quests |
+> | ExtendedWarScore  | better Overview for the normal Warscore Window |
+> | Enemy  | Show group number |
+> | Miraclegrowlight  | Add soil / water/ nutrient
