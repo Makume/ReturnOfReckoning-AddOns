@@ -1,13 +1,13 @@
 > [!TIP]
 > # Download
-> Download the zip-file [here](https://github.com/Makume/ReturnOfReckoning-AddOns/blob/main/WarBoard_Clock/WarBoard_Clock.zip)
+> Download the zip-file [here](https://github.com/Makume/ReturnOfReckoning-AddOns/blob/main/Socialwindow%202.0/SocialWindow%202.0.zip)
 
 > [!NOTE]
 > # Changelog
 > 
 > | Version  | Description |
 > | ------------- | ------------- |
-> | 1.0.3  | Show additional information for Server Time |
+> | 1.0.3  | Fixed an error in the log. Not a nessary update |
 > | 1.0.2  | Base version from indrith  |
 
 > [!NOTE]
