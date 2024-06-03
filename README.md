@@ -34,7 +34,6 @@
 > | Miraclegrowlight  | Add soil / water/ nutrient
 > | CMap  | Add Enemy and State of Realm
 > | TimeInQueue  | Show time in queue for each scenario
-> | SocialWindow 2.0  | Bugfixes
 > | ScenarioLeaveAll  | Option to leave all scenarios
 > | FollowTheLead  | GuardPack adaption for Main Assist or Lead
 > | WoH  | Add Options for coloring the reticle
