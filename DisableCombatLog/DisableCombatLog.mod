@@ -9,6 +9,9 @@
 		<OnInitialize>
 			<CallFunction name="DisableCombatLog.OnInitialize" />
 		</OnInitialize>
+		<OnShutdown>  
+			<CallFunction name="DisableCombatLog.Shutdown" /> 
+		</OnShutdown>  
 		<VersionSettings gameVersion="1.4.8" windowsVersion="1.0" />  
 		<WARInfo>
 			<Categories>           

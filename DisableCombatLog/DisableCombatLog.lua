@@ -3,5 +3,9 @@ if not DisableCombatLog then
 end
 
 function DisableCombatLog.OnInitialize()
-	TextLogSetEnabled ("Combat", false)
+	TextLogSetEnabled("Combat", false)
+end
+
+function DisableCombatLog.Shutdown()
+	TextLogSetEnabled("Combat", true)
 end
