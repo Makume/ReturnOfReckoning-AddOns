@@ -26,13 +26,13 @@ function WarBoard_TogglerDisableCombatLog.OnClick()
 		DisableCombatLog.OnInitialize()
 		TextLogAddEntry("Chat",SystemData.ChatLogFilters.SHOUT,L"[DisableCombatLog]: Disabled")
 		LabelSetTextColor(ModName.."Title2",255,0,0)		
-		LabelSetText(ModName.."Title2",L"Off")
+		LabelSetText(ModName.."Title2",L"Disabled")
 		WarBoard_TogglerDisableCombatLog.Defaults.Enabled = false
 	else
 		DisableCombatLog.Shutdown()
 		TextLogAddEntry("Chat",SystemData.ChatLogFilters.SHOUT,L"[DisableCombatLog]: Enabled")
 		LabelSetTextColor(ModName.."Title2", 0, 255, 0)
-		LabelSetText(ModName.."Title2",L"On")
+		LabelSetText(ModName.."Title2",L"Enabled")
 		WarBoard_TogglerDisableCombatLog.Defaults.Enabled = true
 	end
 end
