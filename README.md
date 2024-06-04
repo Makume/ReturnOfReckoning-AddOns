@@ -31,7 +31,6 @@
 > | OptOut  | Auto OptOut in Public Quests |
 > | ExtendedWarScore  | Better Overview for the normal Warscore Window |
 > | Enemy  | Show group number |
-> | Miraclegrowlight  | Add soil / water/ nutrient
 > | CMap  | Add Enemy and State of Realm
 > | TimeInQueue  | Show time in queue for each scenario
 > | ScenarioLeaveAll  | Option to leave all scenarios
