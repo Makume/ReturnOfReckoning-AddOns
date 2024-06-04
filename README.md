@@ -27,7 +27,6 @@
 > | Addon  | Description |
 > | ------------- | ------------- |
 > | WarBoard_Clock  | Set primary clock  |
-> | WarBoard_DisableCombatLog  | Add Toggler for the AddOn DisableCombatLog |
 > | OptOut  | Auto OptOut in Public Quests |
 > | ExtendedWarScore  | Better Overview for the normal Warscore Window |
 > | Enemy  | Show group number |
