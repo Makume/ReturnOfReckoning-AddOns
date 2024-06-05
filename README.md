@@ -31,6 +31,6 @@
 > | ExtendedWarScore  | Better Overview for the normal Warscore Window |
 > | Enemy  | Show group number |
 > | TimeInQueue  | Show time in queue for each scenario
-> | ScenarioLeaveAll  | Option to leave all scenarios
+> | ScenarioQueueLeaveAll   | Option to leave all scenarios
 > | FollowTheLead  | GuardPack adaption for Main Assist or Lead
 > | WoH  | Add Options for coloring the reticle
