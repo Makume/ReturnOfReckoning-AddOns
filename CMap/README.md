@@ -8,7 +8,7 @@
 > | Version  | Description |
 > | ------------- | ------------- |
 > | 5.1.0  | Added "State of Realm" and "[Enemy](https://tools.idrinth.de/addons/enemy/)" icon<br/>![Icons](https://github.com/Makume/ReturnOfReckoning-AddOns/blob/main/CMap/(Images)/CMap.png)
-> | 5.1.0  | Base version from indrith  |
+> | 5.1.0  | Base version from Indrith  |
 
 > [!NOTE]
 > # Information
