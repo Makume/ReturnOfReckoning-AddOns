@@ -33,4 +33,3 @@
 > | TimeInQueue  | Show time in queue for each scenario
 > | ScenarioQueueLeaveAll   | Option to leave all scenarios
 > | FollowTheLead  | GuardPack adaption for Main Assist or Lead
-> | WoH  | Add Options for coloring the reticle
