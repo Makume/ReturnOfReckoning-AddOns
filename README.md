@@ -29,7 +29,7 @@
 > | WarBoard_Clock  | Set primary clock  |
 > | OptOut  | Auto OptOut in Public Quests |
 > | ExtendedWarScore  | Better Overview for the normal Warscore Window |
-> | Enemy  | UnitFramePart: Show group number<br>Marks: Issue with disappearing<br>Enemy Lite: Removing all unnecessary features |
+> | Enemy  | UnitFramePart: Show group number<br>UnitFrames: Better updating of the visualization<br>Marks: Issue with disappearing<br>Enemy Lite: Removing all unnecessary features |
 > | TimeInQueue  | Show time in queue for each scenario
 > | ScenarioQueueLeaveAll   | Option to leave all scenarios
 > | FollowTheLead  | GuardPack adaption for Main Assist or Lead
