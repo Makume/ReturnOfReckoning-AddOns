@@ -33,3 +33,4 @@
 > | TimeInQueue  | Show time in queue for each scenario
 > | ScenarioQueueLeaveAll   | Option to leave all scenarios
 > | FollowTheLead  | GuardPack adaption for Main Assist or Lead
+> | Wbleadhelper | Function for Countdown/Timer for text messages like "Challenge Party 1" and 5 sec later ....
