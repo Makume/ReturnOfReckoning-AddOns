@@ -12,19 +12,19 @@ function ScenarioQueueLeaveAll.OnInitialize()
 end
 
 function ScenarioQueueLeaveAll.OnScenarioQueueRButtonUp()
-    local queueData = GetScenarioQueueData()
-    if(queueData ~= nil) then
+	local queueData = GetScenarioQueueData()
+	if(queueData ~= nil) then
 		EA_Window_ContextMenu.CreateContextMenu(SystemData.ActiveWindow.name)
-        local queueCount = queueData.totalQueuedScenarios
-        for index = 1, queueCount do
-            local queueName = EA_Window_OverheadMap.GetQueueName(queueData[index].type, queueData[index].id)
-            local menuText = GetStringFormat(StringTables.Default.TEXT_LEAVE_SCENARIO, { queueName })
-            EA_Window_ContextMenu.AddMenuItem(menuText, EA_Window_OverheadMap.LeaveScenario, false, true)
-        end
+		local queueCount = queueData.totalQueuedScenarios
+		for index = 1, queueCount do
+			local queueName = EA_Window_OverheadMap.GetQueueName(queueData[index].type, queueData[index].id)
+			local menuText = GetStringFormat(StringTables.Default.TEXT_LEAVE_SCENARIO, { queueName })
+			EA_Window_ContextMenu.AddMenuItem(menuText, EA_Window_OverheadMap.LeaveScenario, false, true)
+		end
 		EA_Window_ContextMenu.AddMenuDivider()		
 		EA_Window_ContextMenu.AddMenuItem(L"Leave: All Scenarios", ScenarioQueueLeaveAll.LeaveScenarioAll, false, true)
-        EA_Window_ContextMenu.Finalize()
-    end	
+		EA_Window_ContextMenu.Finalize()
+	end	
 end
 
 function ScenarioQueueLeaveAll.LeaveScenarioAll()
