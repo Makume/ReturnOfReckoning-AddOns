@@ -6,7 +6,7 @@
 	<Windows>
 		<Window name="EnemyMarkEntryDialog" movable="true" inherits="EA_Window_Default">
 			<Size>
-				<AbsPoint x="660" y="720" />
+				<AbsPoint x="660" y="765" />
 			</Size>
 			<Anchors>
 				<Anchor point="center" relativePoint="center" relativeTo="Root">
@@ -32,17 +32,17 @@
 				<!-- Content panel -->
                 <!-- ListBox for list -->
                 <ListBox name="$parentList" color="155, 255, 155, 0"  scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EnemyMarkEntryDialogListRow" visiblerows="22" rowcount="1150" rowspacing="0">
-                <Size>
-                    <AbsPoint x="650" y="500" />
-                </Size>  
-                <Anchors>
-                    <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
-                    <AbsPoint x="10" y="5"/>
-                    </Anchor>
-                    <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
-                    <AbsPoint x="-8" y="-60"/>
-                    </Anchor>
-                </Anchors>
+                    <Size>
+                        <AbsPoint x="650" y="500" />
+                    </Size>  
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="10" y="5"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                            <AbsPoint x="-8" y="-100"/>
+                        </Anchor>
+                    </Anchors>
                     <EventHandlers>
                             <EventHandler event="OnLButtonUp" function="Enemy.OnLButtonUpMarkEntry"/>    
                             <EventHandler event="OnRButtonUp" function="Enemy.OnLButtonUpMarkEntry"/>         	
@@ -56,17 +56,37 @@
 				<!-- Bottom panel -->
 				<Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background">
 					<Size>
-						<AbsPoint x="0" y="65" />
+						<AbsPoint x="0" y="110" />
 					</Size>
 				</Window>				
 				<Button name="$parentAddButton" inherits="EA_Button_DefaultResizeable">
+					<Anchors>
+						<Anchor point="bottomleft" relativePoint="bottomleft">
+							<AbsPoint x="10" y="-55" />
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="Enemy.MarksUI_MarkEntryDialog_Add" />
+					</EventHandlers>
+				</Button>
+                <Button name="$parentImportButton" inherits="EA_Button_DefaultResizeable">
 					<Anchors>
 						<Anchor point="bottomleft" relativePoint="bottomleft">
 							<AbsPoint x="10" y="-10" />
 						</Anchor>
 					</Anchors>
 					<EventHandlers>
-						<EventHandler event="OnLButtonUp" function="Enemy.MarksUI_MarkEntryDialog_Add" />
+						<EventHandler event="OnLButtonUp" function="Enemy.MarksUI_MarkEntryDialog_Import" />
+					</EventHandlers>
+				</Button>
+                <Button name="$parentExportButton" inherits="EA_Button_DefaultResizeable">
+					<Anchors>
+						<Anchor point="bottomleft" relativePoint="bottomleft">
+							<AbsPoint x="150" y="-10" />
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="Enemy.MarksUI_MarkEntryDialog_Export" />
 					</EventHandlers>
 				</Button>
 				<Button name="$parentOkButton" inherits="EA_Button_DefaultResizeable">
@@ -145,8 +165,7 @@
                         <Anchor point="topright" relativePoint="topright" />
                         <Anchor point="bottomleft" relativePoint="bottomleft" />
                     </Anchors>
-                </FullResizeImage>  
-
+                </FullResizeImage>
                 <Label name="$parentLabel" inherits="DefaultWindowSubTitle" maxchars="256" textalign="center">
                     <Size>
                         <AbsPoint x="400" y="25" />
@@ -216,8 +235,7 @@
                         <Anchor point="topright" relativePoint="topright" />
                         <Anchor point="bottomleft" relativePoint="bottomleft" />
                     </Anchors>
-                </FullResizeImage>  
-
+                </FullResizeImage>
                 <Label name="$parentLabel" inherits="DefaultWindowSubTitle" maxchars="256" textalign="center">
                     <Size>
                         <AbsPoint x="400" y="25" />
@@ -242,7 +260,6 @@
                         <EventHandler event="OnKeyEscape" function="Enemy.OnCancelEditMarkPlayer" />
                     </EventHandlers>
                 </EditBox>
-
                 <Button name="$parentOKButton" inherits="EA_Button_DefaultResizeable" >
                     <Anchors>
                         <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText">
@@ -253,7 +270,6 @@
                         <EventHandler event="OnLButtonUp" function="Enemy.OnEditMarkPlayerAccept"/>
                     </EventHandlers>
                 </Button>
-
                 <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable" >
                     <Anchors>
                         <Anchor point="topright" relativePoint="topleft" relativeTo="$parentOKButton">

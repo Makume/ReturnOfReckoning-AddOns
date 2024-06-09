@@ -8,6 +8,8 @@ local PopulateData = {}
 local WindowName = "EnemyMarkEntryDialog"
 local AddWindowName = "AddMarkPlayer"
 local EditWindowName = "EditMarkPlayer"
+local ExportWindowName = "ExportMarkPlayer"
+local Separator = L"|"
 
 function Enemy.MarksUI_MarkEditEntryDialog_Open(template, onOkCallback)
 	if (DoesWindowExist(WindowName)) then
@@ -16,6 +18,8 @@ function Enemy.MarksUI_MarkEditEntryDialog_Open(template, onOkCallback)
 	CreateWindow(WindowName, false)
 	LabelSetText(WindowName.."TitleBarText", L"Edit mark entries ("..template.name..L")")
 	ButtonSetText(WindowName.."AddButton", L"Add Entry")
+	ButtonSetText(WindowName.."ImportButton", L"Import Entries")
+	ButtonSetText(WindowName.."ExportButton", L"Export Entries")
 	ButtonSetText(WindowName.."OkButton", L"OK")
 	ButtonSetText(WindowName.."CancelButton", L"Cancel")
 	ConfigData = Enemy.clone(template)
@@ -178,4 +182,33 @@ function Enemy.MakePermanentTargetsCopy()
 		end	
 	end
 	return permanentTargetsCopy
+end
+
+function Enemy.MarksUI_MarkEntryDialog_Import()
+	Enemy.UI_TextEntryDialog_Open(L"Import", L"Paste (Ctrl+V) a "..Separator..L" seperated permament mark data string.", L"",
+	function(str)
+		if (str == nil or str == L"") then
+			return
+		end
+		for NewPlayerName in string.gmatch(tostring(str), '([^'..tostring(Separator)..']+)') do
+			ConfigData.permanentTargets[towstring(NewPlayerName)] = false
+		end
+		Enemy.InitMarksEditListData()
+	end)
+end
+
+function Enemy.all_trim(s)
+	return s:match( "^%s*(.-)%s*$" )
+end
+
+function Enemy.MarksUI_MarkEntryDialog_Export()
+	local ExportText = L""
+	for k,v in pairs(ConfigData.permanentTargets) do
+		if ExportText == L"" then
+			ExportText = towstring(k)
+		else
+			ExportText = ExportText..Separator..towstring(k)
+		end
+	end
+	Enemy.UI_TextEntryDialog_Open(L"Export", L"Select all (Ctrl+A) and copy (Ctrl+C) this permament mark data string", ExportText)
 end
