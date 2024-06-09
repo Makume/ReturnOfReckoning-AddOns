@@ -7,4 +7,4 @@
 > 
 > | Version  | Description |
 > | ------------- | ------------- |
-> | 1.0.0  | Added a list option to leave all scenarios from queue |
+> | 1.0.0  | Added a list option to leave all scenarios from queue ![](https://github.com/Makume/ReturnOfReckoning-AddOns/blob/main/ScenarioQueueLeaveAll/(Images)/LeaveAll.png)|
