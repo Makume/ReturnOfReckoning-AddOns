@@ -8,8 +8,7 @@ function RorTactics.Initialize()
 end
 
 function RorTactics.UpdateTacticButtons()
-	local modules = ModulesGetData()
-	for k,v in ipairs(modules) do
+	for _,v in ipairs(ModulesGetData()) do
 		if v.name == "EA_TacticsWindow_WifNamez" then
 			if v.isEnabled and not v.isLoaded then
 				ModuleInitialize("EA_TacticsWindow_WifNamez");
