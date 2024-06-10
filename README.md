@@ -31,4 +31,5 @@
 > | WBLeadHelper | Function for Countdown/Timer for text messages like "Challenge Party 1" and 5 sec later ....
 > | ExtendedWarScore  | Better Overview for the normal Warscore Window |
 > | Enemy  | UnitFramePart: Show group number<br>UnitFrames: Better updating of the visualization<br>Marks: Issue with disappearing<br>Enemy Lite: Removing all unnecessary features<br>General: Performance optimization<br>General: Optimize init value not replacing changes |
-> | FollowTheLead  | GuardPack adaption for Main Assist or Lead
+> | FollowTheLead  | GuardPack adaption for Main Assist or Lead |
+> | SellPrice | Show min/max/avg auction house prices. Will only work near the auction house |
