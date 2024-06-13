@@ -8,4 +8,4 @@
 > | Version  | Description |
 > | ------------- | ------------- |
 > | 1.1.0  | ActionbarLockToggle activate or deactivate the addon |
-> | 1.0.0  | Execute abilities On Left Button Down instead of  On Left Button Up |
+> | 1.0.0  | Execute abilities On Left Button Down (KeyPress) instead of  On Left Button Up (KeyUp) |
