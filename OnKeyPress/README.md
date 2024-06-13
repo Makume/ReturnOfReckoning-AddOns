@@ -1,6 +1,6 @@
 > [!TIP]
 > # Download
-> Download the zip-file [here](https://github.com/Makume/ReturnOfReckoning-AddOns/blob/main/ActionOnLButtonDown/ActionOnLButtonDown.zip)
+> Download the zip-file [here](https://github.com/Makume/ReturnOfReckoning-AddOns/blob/main/OnKeyPress/OnKeyPress.zip)
 
 > [!NOTE]
 > # Changelog
