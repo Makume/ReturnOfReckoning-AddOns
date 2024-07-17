@@ -20,3 +20,18 @@
 > With kind regards
 > 
 > [Adeptha](https://discordapp.com/users/493327188821671936)
+
+> [!TIP]
+> # You found a bug?
+> 
+> Report the bug [here](https://github.com/Makume/ReturnOfReckoning-AddOns/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=%5BBUG%5D)
+
+> [!TIP]
+> # You have a request for an existing AddOn?
+> 
+> Create the request [here](https://github.com/Makume/ReturnOfReckoning-AddOns/issues/new?assignees=&labels=enhancement&projects=&template=feature_request.md&title=%5BFEATURE%5D)
+
+> [!TIP]
+> # You have a request for a new AddOn?
+> 
+> Create the request [here](https://github.com/Makume/ReturnOfReckoning-AddOns/issues/new?assignees=&labels=new&projects=&template=addon-request.md&title=%5BNEW%5D)
