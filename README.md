@@ -10,7 +10,7 @@
 > After that you have to extract the zip file and copy the content to your game AddOn folder.
 >
 > Example:
-> ![Example](https://github.com/Makume/ReturnOfReckoning-AddOns/blob/main/(Images)/AddOn%20Folder.png)
+> ![Example](https://github.com/Makume/ReturnOfReckoning-AddOns/blob/main/(images)/AddOn%20Folder.png)
 
 > [!IMPORTANT]
 > # Support
