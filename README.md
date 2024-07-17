@@ -19,7 +19,7 @@
 > 
 > With kind regards
 > 
-> Adeptha 
+> [Adeptha](https://discordapp.com/users/493327188821671936)
 
 > [!NOTE]
 > # Upcoming Changes
