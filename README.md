@@ -20,14 +20,3 @@
 > With kind regards
 > 
 > [Adeptha](https://discordapp.com/users/493327188821671936)
-
-> [!NOTE]
-> # Upcoming Changes
->
-> | Addon  | Description |
-> | ------------- | ------------- |
-> | WarBoard_Clock  | Set primary clock  |
-> | WBLeadHelper | Function for Countdown/Timer for text messages like "Challenge Party 1" and 5 sec later ....
-> | ExtendedWarScore  | Better Overview for the normal Warscore Window |
-> | Enemy  | UnitFramePart: Show group number<br>UnitFrames: Better updating of the visualization<br>Marks: Issue with disappearing<br>Enemy Lite: Removing all unnecessary features<br>General: Performance optimization<br>General: Optimize init value not replacing changes |
-> | FollowTheLead  | GuardPack adaption for Main Assist or Lead |
