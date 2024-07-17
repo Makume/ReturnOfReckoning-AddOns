@@ -1,8 +1,8 @@
 ---
 name: Feature request
 about: Suggest an idea for tan addon
-title: ''
-labels: ''
+title: "[FEATURE]"
+labels: enhancement
 assignees: ''
 
 ---
