@@ -1,6 +1,6 @@
 > [!TIP]
 > # Download
-> Download the zip-file [here](https://github.com/Makume/ReturnOfReckoning-AddOns-Dev/blob/main/DisableCombatLog/DisableCombatLog.zip)
+> Download the zip-file [here](https://github.com/Makume/ReturnOfReckoning-AddOns/blob/main/DisableCombatLog/DisableCombatLog.zip)
 
 > [!NOTE]
 > # Changelog
