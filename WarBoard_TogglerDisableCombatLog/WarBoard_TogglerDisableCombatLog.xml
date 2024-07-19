@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Windows>
+		<Window name="WarBoard_TogglerDisableCombatLog" inherits="EA_Window_Default" movable="false" layer="secondary" savesettings="false" >
+			<Size>
+				<AbsPoint x="150" y="30" />
+			</Size>
+			<EventHandlers>
+				<EventHandler event="OnMouseOver" function="WarBoard_TogglerDisableCombatLog.OnMouseOver" />
+				<EventHandler event="OnLButtonUp" function="WarBoard_TogglerDisableCombatLog.OnClick" />
+			</EventHandlers>
+			<Windows>
+				<FullResizeImage name="$parentBackground" inherits="ModBackgroundTemplate" />
+				<Label name="$parentTitle" inherits="EA_Settings_ItemTitle" skipinput="true" textalign="center">
+					<Size>
+						<AbsPoint x="150" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="top" relativeTo="" relativePoint="top" >
+							<AbsPoint x="-2" y="-2" />
+						</Anchor>
+					</Anchors>
+				</Label>
+				<Label name="$parentTitle2" font="font_clear_small_bold" skipinput="true" textalign="center">
+					<Size>
+						<AbsPoint x="150" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="bottom" relativeTo="" relativePoint="bottom" >
+							<AbsPoint x="" y="4" />
+						</Anchor>
+					</Anchors>
+				</Label>
+			</Windows>
+		</Window>
+	</Windows>
+</Interface>
