@@ -5,6 +5,7 @@
 		<Description text="Toggler for DisableCombatLog" />
 		<VersionSettings gameVersion="1.4.8" windowsVersion="1.0" savedVariablesVersion="1.0" />
 		<Dependencies>
+			<Dependency name="WarBoard" forceEnable="false" />
 			<Dependency name="DisableCombatLog" forceEnable="false" />
 		</Dependencies>
 		<Files>
