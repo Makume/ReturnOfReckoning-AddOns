@@ -1,6 +1,6 @@
 > [!CAUTION]
 > # Important dependencies
-> You need the AddOns [WarBoard](https://tools.idrinth.de/addons/warboard/) and [WarBoard_Session](https://tools.idrinth.de/addons/warboard_session/)
+> You need the AddOns [WarBoard](https://tools.idrinth.de/addons/warboard/) and [WarBoard_Session](https://tools.idrinth.de/addons/warboard_session/).<br/>
 > This Addon just replace some parts from the base AddOn [WarBoard_Session](https://tools.idrinth.de/addons/warboard_session/)
 
 > [!TIP]
