@@ -1,3 +1,7 @@
+> [!CAUTION]
+> # Important
+> You need the AddOns [DisbaleCombatLog](https://github.com/Makume/ReturnOfReckoning-AddOns/tree/main/DisableCombatLog) and [WarBoard](https://tools.idrinth.de/addons/warboard/)
+
 > [!TIP]
 > # Download
 > Download the zip-file [here](https://github.com/Makume/ReturnOfReckoning-AddOns/blob/main/WarBoard_TogglerDisableCombatLog/WarBoard_TogglerDisableCombatLog.zip)
