@@ -1,5 +1,5 @@
 > [!CAUTION]
-> # Important
+> # Important dependencies
 > You need the AddOns [DisbaleCombatLog](https://github.com/Makume/ReturnOfReckoning-AddOns/tree/main/DisableCombatLog) and [WarBoard](https://tools.idrinth.de/addons/warboard/)
 
 > [!TIP]
