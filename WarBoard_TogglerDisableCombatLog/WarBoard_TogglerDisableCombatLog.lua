@@ -41,6 +41,6 @@ function WarBoard_TogglerDisableCombatLog.OnMouseOver()
 	Tooltips.CreateTextOnlyTooltip(ModName, nil)
 	Tooltips.AnchorTooltip(WarBoard.GetModToolTipAnchor(ModName))
 	Tooltips.SetTooltipText(1,1,L"Combat Log")
-	Tooltips.SetTooltipText(2,1,L"Left Mouse to enable/disable the Combat Log");
+	Tooltips.SetTooltipActionText(L"Left Mouse to enable/disable the Combat Log")
 	Tooltips.Finalize()
 end
