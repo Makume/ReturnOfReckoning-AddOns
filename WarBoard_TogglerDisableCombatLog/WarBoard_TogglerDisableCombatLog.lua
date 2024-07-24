@@ -2,8 +2,8 @@ if not WarBoard_TogglerDisableCombatLog then
 	WarBoard_TogglerDisableCombatLog = {} 
 end
 
-WarBoard_TogglerDisableCombatLog.Defaults = {
-	Enabled = true
+WarBoard_TogglerDisableCombatLog.SavedSettings = {
+	Enabled = false
 }
 
 local WarBoard_TogglerDisableCombatLog = WarBoard_TogglerDisableCombatLog
@@ -16,24 +16,25 @@ function WarBoard_TogglerDisableCombatLog.Initialize()
 			WindowSetAlpha(ModName.."Background",0.25)
 			LabelSetTextColor(ModName.."Title",255,200,0)
 			LabelSetText(ModName.."Title", L"Combat Log")
+			WarBoard_TogglerDisableCombatLog.SavedSettings.Enabled = not WarBoard_TogglerDisableCombatLog.SavedSettings.Enabled
 			WarBoard_TogglerDisableCombatLog.OnClick()
 		end
 	end
 end
 
 function WarBoard_TogglerDisableCombatLog.OnClick()
-	if WarBoard_TogglerDisableCombatLog.Defaults.Enabled then
+	if WarBoard_TogglerDisableCombatLog.SavedSettings.Enabled then
 		DisableCombatLog.OnInitialize()
 		TextLogAddEntry("Chat",SystemData.ChatLogFilters.SHOUT,L"[DisableCombatLog]: Disabled")
 		LabelSetTextColor(ModName.."Title2",255,0,0)		
 		LabelSetText(ModName.."Title2",L"Disabled")
-		WarBoard_TogglerDisableCombatLog.Defaults.Enabled = false
+		WarBoard_TogglerDisableCombatLog.SavedSettings.Enabled = false
 	else
 		DisableCombatLog.Shutdown()
 		TextLogAddEntry("Chat",SystemData.ChatLogFilters.SHOUT,L"[DisableCombatLog]: Enabled")
 		LabelSetTextColor(ModName.."Title2", 0, 255, 0)
 		LabelSetText(ModName.."Title2",L"Enabled")
-		WarBoard_TogglerDisableCombatLog.Defaults.Enabled = true
+		WarBoard_TogglerDisableCombatLog.SavedSettings.Enabled = true
 	end
 end
 

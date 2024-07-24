@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ModuleFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<UiMod name="WarBoard_TogglerDisableCombatLog" version="1.0.0" date="6/4/2024" >
+	<UiMod name="WarBoard_TogglerDisableCombatLog" version="1.0.1" date="07/23/2024" >
 		<Author name="Psychoxell (Adeptha)" email="" />
 		<Description text="Toggler for DisableCombatLog" />
-		<VersionSettings gameVersion="1.4.8" windowsVersion="1.0" savedVariablesVersion="1.0" />
+		<VersionSettings gameVersion="1.4.8" windowsVersion="1.0" savedVariablesVersion="1.0"/>
 		<Dependencies>
 			<Dependency name="WarBoard" forceEnable="false" />
 			<Dependency name="DisableCombatLog" forceEnable="false" />
@@ -12,9 +12,14 @@
 			<File name="WarBoard_TogglerDisableCombatLog.lua" />
 			<File name="WarBoard_TogglerDisableCombatLog.xml" />
 		</Files>
+		<SavedVariables>
+			<SavedVariable name="WarBoard_TogglerDisableCombatLog.SavedSettings" />
+		</SavedVariables>
 		<OnInitialize>
 			<CallFunction name="WarBoard_TogglerDisableCombatLog.Initialize" />
 		</OnInitialize>
+		<OnUpdate/>
+		<OnShutdown/>
 		<WARInfo>
 			<Categories>
 				<Category name="SYSTEM" />
