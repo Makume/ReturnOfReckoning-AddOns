@@ -1,0 +1,444 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/SocialWindow.lua"/>
+    </Scripts>
+    <Windows>
+
+        <!-- Templates -->
+        <Button name="SocialWindowDefaultLargeSquarePlus" inherits="EA_Button_Default" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01"
+                                                            overlaytexture="EA_HUD_01" overlayhighlighttexture="EA_HUD_01" >
+            <Size>
+                <AbsPoint x="29" y="29" />
+            </Size>
+            <TexCoords>
+                <Normal x="172" y="341" />
+                <NormalHighlit x="201" y="341" />
+                <Pressed x="172" y="370" />
+                <PressedHighlit x="172" y="370" />
+                <Disabled x="230" y="341" />
+            </TexCoords>
+            <OverlaySize x="18" y="18" />
+            <OverlayOffset x="5" y="5" />
+            <OverlayTexCoords>
+                <Normal x="493" y="502" />
+                <NormalHighlit x="475" y="502" />
+                <Pressed x="493" y="502" />
+                <PressedHighlit x="475" y="502" />
+            </OverlayTexCoords>
+        </Button>
+        <Button name="SocialWindowDefaultLargeSquareMinus" inherits="EA_Button_Default" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01"
+                                                            overlaytexture="EA_HUD_01" overlayhighlighttexture="EA_HUD_01" >
+            <Size>
+                <AbsPoint x="29" y="29" />
+            </Size>
+            <TexCoords>
+                <Normal x="172" y="341" />
+                <NormalHighlit x="201" y="341" />
+                <Pressed x="172" y="370" />
+                <PressedHighlit x="172" y="370" />
+                <Disabled x="230" y="341" />
+            </TexCoords>
+            <OverlaySize x="18" y="6" />
+            <OverlayOffset x="5" y="10" />
+            <OverlayTexCoords>
+                <Normal x="494" y="555" />
+                <NormalHighlit x="476" y="555" />
+                <Pressed x="494" y="555" />
+                <PressedHighlit x="476" y="555" />
+            </OverlayTexCoords>
+        </Button>
+        <!-- Social Submenu Button (button that has menu to show on mouseover) Template -->
+        <Button name="SocialContextMenuItemWithMenu" inherits="EA_Button_DefaultMenuButton" font="font_default_text_large" textalign="left" autoresize="true">
+            <Size>
+                <AbsPoint x="245" y="28" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentNestedMenuButton" texture="EA_HUD_01" layer="popup" popable="false" sticky="false" handleinput="false">
+                    <Size>
+                        <AbsPoint x="16" y="21" />
+                    </Size>
+                    <TexCoords x="457" y="463" />
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="4" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Button>
+        <Window name="SocialWindowLineTemplate" layer="popup">
+            <Size>
+                <AbsPoint x="600" y="25" />
+            </Size>
+            <Windows>
+
+                <Label name="$parentName" maxchars="64" wordwrap="false" font="font_journal_text"  textalign="left" autoresize="true" autoresizewidth="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="300" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="2" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentZoneName" maxchars="64" wordwrap="false" font="font_journal_text"  textalign="left" autoresize="true" autoresizewidth="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="300" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="150" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="SocialWindow.OnMouseOverListMember"/>
+                <EventHandler event="OnMouseOverEnd" function="SocialWindow.OnMouseOverEndListMember"/>
+                <EventHandler event="OnLButtonUp" function="SocialWindow.OnLButtonUpListMember"/>
+                <EventHandler event="OnRButtonUp" function="SocialWindow.OnRButtonUpListMember"/>
+            </EventHandlers>
+        </Window>
+
+        <!-- Add Friend Window Template -->
+        <Window name="SocialWindowAddMemberWindow" movable="false" layer="popup" savesettings="false">
+            <Size>
+                <AbsPoint x="400" y="150" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="">
+                    <AbsPoint x="0" y="325" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />        
+
+				
+
+                <EditBox name="$parentText" inherits="EA_EditBox_DefaultFrame" maxchars="20" taborder="1">
+                    <Size>
+                        <AbsPoint x="300" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="0" y="60" />
+                        </Anchor>
+                    </Anchors>
+                </EditBox>
+
+                <Button name="$parentAcceptButton" inherits="EA_Button_DefaultResizeable" font="font_chat_text" textalign="center">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable" font="font_chat_text" textalign="center">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentAcceptButton">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+            </Windows>
+        </Window>
+
+        <!-- View mode button definitions -->
+        <Button name="SocialWindowTabTemplate" inherits="EA_Button_Tab">
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="SocialWindow.OnLButonTab" />
+                <EventHandler event="OnMouseOver" function="SocialWindow.OnMouseOverTab" />
+                <EventHandler event="OnMouseOverEnd" function="SocialWindow.OnMouseOverEndTab" />
+            </EventHandlers>
+        </Button>
+
+        <!--*******************************************************************-->
+        <!--                      Whole Window Definition                      -->
+        <!--*******************************************************************-->
+        <Window name="SocialWindowListWindow" savesettings="false">
+            <Size>
+                <AbsPoint x="400" y="500"/>
+            </Size>
+            <Windows>
+                <Label name="$parentHeader" font="font_default_war_heading" maxchars="256" textalign="left" autoresize="true" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="240" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" >
+                            <AbsPoint x="0" y="2" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Button name="$parentPlusButton" inherits="SocialWindowDefaultLargeSquarePlus">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentHeader">
+                            <AbsPoint x="0" y="-2" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="SocialWindow.ToggleOfflineMembersShowing" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentMinusButton" inherits="SocialWindowDefaultLargeSquareMinus">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentHeader">
+                            <AbsPoint x="0" y="-2" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="SocialWindow.ToggleOfflineMembersShowing" />
+                    </EventHandlers>
+                </Button>
+                <FullResizeImage name="$parentButtonBackground" inherits="EA_FullResizeImage_MetalFill" handleinput="false" layer="popup">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="-2" y="-50"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="4" y="-2"/>
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <Button name="$parentAddFriendButton" inherits="EA_Button_DefaultResizeable" font="font_chat_text" textalign="center" layer="popup">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parentButtonBackground">
+                            <AbsPoint x="0" y="2" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="SocialWindow.MemberAdd" />
+                    </EventHandlers>
+                </Button>
+                <ScrollWindow name="$parentScrollWindow"  childscrollwindow="SocialWindowListWindowDetail" scrollbar="SocialWindowListWindowScrollWindowScrollbar" lineheight="40" autoHideScrollBar="true">
+                    <Size>
+                        <AbsPoint x="400" y="372" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="34"/>
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentButtonBackground">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                            <Size>
+                                <AbsPoint x="20" y="200"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </VerticalScrollbar>
+                        <Window name="SocialWindowListWindowDetail" layer="secondary">
+                            <Size>
+                                <AbsPoint x="400" y="300" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                                <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentScrollbar"/>
+                            </Anchors>
+                            <Windows>
+                                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_BlackTransparent" >
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topright" >
+                                            <AbsPoint x="-4" y="4" />
+                                        </Anchor>
+                                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                                            <AbsPoint x="4" y="-4" />
+                                        </Anchor>
+                                    </Anchors>
+                                </FullResizeImage>
+                            </Windows>
+                        </Window>
+                    </Windows>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseWheel" function="SocialWindow.HideSelectionBorder" />
+                    </EventHandlers>
+                </ScrollWindow>
+                <Window name="$parentAddMemberWindow" inherits="SocialWindowAddMemberWindow">
+                </Window>
+                <FullResizeImage name="$parentSelection" inherits="EA_FullResizeImage_WhiteTransparent" alpha="0.2" layer="popup">
+                    <Anchor point="topleft" relativePoint="topleft" />
+                    <Anchor point="topright" relativePoint="bottomright" >
+                        <AbsPoint x="0" y="85" />
+                    </Anchor>
+                </FullResizeImage>
+
+            </Windows>
+            <EventHandlers>
+                <EventHandler event="OnHidden" function="SocialWindow.OnListWindowHidden" />
+                <EventHandler event="OnLButtonUp" function="SocialWindow.OnListWindowLButtonUp" />
+            </EventHandlers>
+        </Window>
+        <Window name="SocialWindowPlayerInformationTooltipWindow" handleinput="false" layer="overlay" localscriptvars="true" sticky="true">
+            <Size>
+                <AbsPoint x="0" y="32" />
+            </Size>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultTooltipBackground">
+                    <Size>
+                        <AbsPoint x="0" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="0" y="6" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <DynamicImage name="$parentCareerIcon"  textureScale="1.0" handleinput="false"  layer="background" >
+                    <Size>
+                        <AbsPoint x="32" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="8" y="8" />
+                        </Anchor>
+                    </Anchors>
+
+                </DynamicImage>
+                <Label name="$parentRankText" font="font_default_text" maxchars="200"  wordwrap="false" autoresize="true" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="250" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCareerIcon">
+                            <AbsPoint x="6" y="4" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" />
+                </Label>
+                <Label name="$parentCareerNameText" font="font_default_text" maxchars="200"  wordwrap="false" autoresize="true" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="250" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentRankText">
+                            <AbsPoint x="12" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" />
+                </Label>
+            </Windows>
+        </Window>
+
+        <Window name="SocialWindow" movable="true" layer="secondary">
+            <Size>
+                <AbsPoint x="1409" y="748"/>
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="SocialWindow.Initialize"/>
+                <EventHandler event="OnShutdown"    function="SocialWindow.Shutdown"/>
+                <EventHandler event="OnKeyEscape"   function="SocialWindow.OnKeyEscape" />
+                <EventHandler event="OnShown"       function="SocialWindow.OnShown" />
+                <EventHandler event="OnHidden"      function="SocialWindow.OnHidden" />
+            </EventHandlers>
+            <Sounds>
+                <Sound event="OnShown" script="Sound.Play( Sound.GUILD_OPEN )" />
+                <Sound event="OnHidden" script="Sound.Play( Sound.GUILD_CLOSE )" />
+            </Sounds>
+
+            <Windows>
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />        
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="SocialWindow.Hide" />
+					</EventHandlers>
+				</Button>
+				
+
+                <!--********************-->
+                <!-- Social Window Tabs -->
+                <!--********************-->
+
+                <Window name="$parentTabSeparatorLeft" inherits="EA_Window_TabSeparatorLeftSide" handleinput="true" layer="popup">
+                    <Size>
+                        <AbsPoint x="10" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentViewMode1">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                        
+                    </Anchors>
+                </Window>
+
+                <!-- View mode button definitions -->
+                <Button name="$parentViewMode1" inherits="SocialWindowTabTemplate" id="1">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentViewMode2" inherits="SocialWindowTabTemplate" id="2">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentViewMode1" />
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentViewMode3" inherits="SocialWindowTabTemplate" id="3">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentViewMode2" />
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentViewMode4" inherits="SocialWindowTabTemplate" id="4">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentViewMode3" />
+                    </Anchors>
+                </Button>
+                
+                <Window name="$parentTabSeparatorRight" inherits="EA_Window_TabSeparatorRightSide" layer="background" popable="false">
+                    <Size>
+                        <AbsPoint x="882" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentViewMode4">
+                            <AbsPoint x="0" y="14" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!--********************-->
+                <!--     Tab Socket     -->
+                <!--********************-->
+
+                <Window name="SocialWindowSocket" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="50" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                    </Windows>
+                </Window>
+
+                <Window name ="SocialWindowTabSearch" inherits ="SocialWindowTabSearchSocket"/>
+                <Window name ="SocialWindowTabFriends" inherits ="SocialWindowTabFriendsSocket"/>
+                <Window name ="SocialWindowTabIgnore" inherits ="SocialWindowTabIgnoreSocket"/>
+                <Window name ="SocialWindowTabOptions" inherits ="SocialWindowTabOptionsSocket"/>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

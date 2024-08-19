@@ -1,0 +1,283 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/SocialWindowTabOptions.lua"/>
+  </Scripts>
+  <Windows>
+  
+    <!-- Templates -->
+    <Label name="SocialWindowOptionsHeaderTemplate" font="font_default_sub_heading" maxchars="50" textalign="left" >
+      <Size>
+        <AbsPoint x="350" y="24"/>
+      </Size>
+      <Color r="255" g="204" b="102" a="255"/>
+    </Label>
+    
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="SocialWindowTabOptionsSocket" movable="false" layer="secondary">
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="SocialWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="SocialWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="SocialWindowTabOptions.Initialize"/>
+        <EventHandler event="OnShutdown" function="SocialWindowTabOptions.Shutdown"/>
+      </EventHandlers>
+      <Windows>
+
+
+        <!-- Top Half -->
+        <Window name="$parentTopHalf" layer="background" handleinput="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+            <Anchor point="right" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="0" y="32" />
+            </Anchor>
+          </Anchors>
+        </Window>
+        
+        <!-- AFK Background -->
+        <FullResizeImage name="$parentAFKBackground" inherits="EA_FullResizeImage_DefaultFrame" >
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="15" y="15" />
+            </Anchor>
+            <Anchor point="right" relativePoint="bottomright" relativeTo="$parentTopHalf">
+              <AbsPoint x="-15" y="-15" />
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+        
+        <!-- Options Background -->
+        <FullResizeImage name="$parentOptionsBackground" inherits="EA_FullResizeImage_DefaultFrame" >
+            <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAFKBackground">
+                    <AbsPoint x="0" y="8" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                    <AbsPoint x="-15" y="-15" />
+                </Anchor>
+            </Anchors>
+        </FullResizeImage>
+        
+        <!--*******************************************************************-->
+        <!--                      Options Section                              -->
+        <!--*******************************************************************-->
+        <Label name="$parentOptionsLabel" inherits="SocialWindowOptionsHeaderTemplate">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentOptionsBackground">
+              <AbsPoint x="15" y="15" />
+            </Anchor>
+          </Anchors>
+        </Label>
+        
+        <!-- Anonymous -->
+        <Button name="$parentAnonymousPreference" inherits="EA_Button_DefaultCheckBox">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentOptionsLabel">
+              <AbsPoint x="0" y="5" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="SocialWindowTabOptions.OnPressAnonymousButton" />
+          </EventHandlers>
+        </Button>
+        <Label name="$parentAnonymousLabel" inherits="SocialWindowOptionsHeaderTemplate" >
+          <Anchors>
+            <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentAnonymousPreference">
+              <AbsPoint x="12" y="0" />
+            </Anchor>
+          </Anchors>
+        </Label>
+        <Label name="$parentAnonymousDescLabel" inherits="EA_Label_ChatText" textalign="left" layer="overlay" autoresize="true" handleinput="false">
+          <Size>
+              <AbsPoint x="600" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAnonymousLabel">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="255" b="255" a="255" />
+        </Label>
+        
+        <!-- Hidden -->
+        <Button name="$parentHiddenPreference" inherits="EA_Button_DefaultCheckBox">
+            <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAnonymousPreference">
+              <AbsPoint x="0" y="25" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="SocialWindowTabOptions.OnPressHiddenButton" />
+          </EventHandlers>
+        </Button>
+        <Label name="$parentHiddenLabel" inherits="SocialWindowOptionsHeaderTemplate" >
+          <Anchors>
+            <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentHiddenPreference">
+              <AbsPoint x="12" y="0" />
+            </Anchor>
+          </Anchors>
+        </Label>
+        <Label name="$parentHiddenDescLabel" inherits="EA_Label_ChatText" textalign="left" layer="overlay" autoresize="true" handleinput="false">
+          <Size>
+              <AbsPoint x="600" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHiddenLabel">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="255" b="255" a="255" />
+        </Label>
+
+      <!-- Private Parties -->
+      <Button name="$parentPrivatePartyPreference" inherits="EA_Button_DefaultCheckBox">
+          <Anchors>
+              <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHiddenPreference">
+                  <AbsPoint x="0" y="25" />
+              </Anchor>
+          </Anchors>
+          <EventHandlers>
+              <EventHandler event="OnLButtonUp" function="SocialWindowTabOptions.OnPressPrivatePartyButton" />
+          </EventHandlers>
+      </Button>
+      <Label name="$parentPrivatePartyLabel" inherits="SocialWindowOptionsHeaderTemplate" >
+          <Anchors>
+              <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentPrivatePartyPreference">
+                  <AbsPoint x="12" y="0" />
+              </Anchor>
+          </Anchors>
+      </Label>
+      <Label name="$parentPrivatePartyDescLabel" inherits="EA_Label_ChatText" textalign="left" layer="overlay" autoresize="true" handleinput="false">
+          <Size>
+              <AbsPoint x="600" y="20" />
+          </Size>
+          <Anchors>
+              <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPrivatePartyLabel">
+                  <AbsPoint x="0" y="0" />
+              </Anchor>
+          </Anchors>
+          <Color r="255" g="255" b="255" a="255" />
+      </Label>
+      
+     <!-- Buddy List disable -->
+      <Button name="$parentDisableBuddyListPreference" inherits="EA_Button_DefaultCheckBox">
+          <Anchors>
+              <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPrivatePartyPreference">
+                  <AbsPoint x="0" y="25" />
+              </Anchor>
+          </Anchors>
+          <EventHandlers>
+              <EventHandler event="OnLButtonUp" function="SocialWindowTabOptions.OnPressDisableBuddyListButton" />
+          </EventHandlers>
+      </Button>
+      <Label name="$parentDisableBuddyListLabel" inherits="SocialWindowOptionsHeaderTemplate" >
+          <Anchors>
+              <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentDisableBuddyListPreference">
+                  <AbsPoint x="12" y="0" />
+              </Anchor>
+          </Anchors>
+      </Label>
+      <Label name="$parentDisableBuddyListDescLabel" inherits="EA_Label_ChatText" textalign="left" layer="overlay" autoresize="true" handleinput="false">
+          <Size>
+              <AbsPoint x="800" y="20" />
+          </Size>
+          <Anchors>
+              <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentDisableBuddyListLabel">
+                  <AbsPoint x="0" y="0" />
+              </Anchor>
+          </Anchors>
+          <Color r="255" g="255" b="255" a="255" />
+      </Label>
+      
+     <!-- Flag self as advisor -->
+      <Button name="$parentAdvisorPreference" inherits="EA_Button_DefaultCheckBox">
+          <Anchors>
+              <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentDisableBuddyListPreference">
+                  <AbsPoint x="0" y="25" />
+              </Anchor>
+          </Anchors>
+          <EventHandlers>
+              <EventHandler event="OnLButtonUp" function="SocialWindowTabOptions.OnPressAdvisorButton" />
+          </EventHandlers>
+      </Button>
+      <Label name="$parentAdvisorLabel" inherits="SocialWindowOptionsHeaderTemplate" >
+          <Anchors>
+              <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentAdvisorPreference">
+                  <AbsPoint x="12" y="0" />
+              </Anchor>
+          </Anchors>
+      </Label>
+      <Label name="$parentAdvisorDescLabel" inherits="EA_Label_ChatText" textalign="left" layer="overlay" autoresize="true" handleinput="false">
+          <Size>
+              <AbsPoint x="800" y="20" />
+          </Size>
+          <Anchors>
+              <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAdvisorLabel">
+                  <AbsPoint x="0" y="0" />
+              </Anchor>
+          </Anchors>
+          <Color r="255" g="255" b="255" a="255" />
+      </Label>
+    
+        <!--*******************************************************************-->
+        <!--                          AFK Section                              -->
+        <!--*******************************************************************-->
+        
+        <Label name="$parentAFKLabel" inherits="SocialWindowOptionsHeaderTemplate">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentAFKBackground">
+              <AbsPoint x="15" y="15" />
+            </Anchor>
+          </Anchors>
+        </Label>
+        
+        <Label name="$parentAFKNoteLabel" inherits="EA_Label_ChatText" textalign="left" layer="overlay" autoresize="true" handleinput="false">
+          <Size>
+              <AbsPoint x="650" y="40" />
+          </Size>
+          <Anchors>
+            <Anchor point="top" relativePoint="top" relativeTo="$parentAFKBackground">
+              <AbsPoint x="0" y="50" />
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="255" b="255" a="255" />
+        </Label>
+        <EditBox name="$parentAFKNoteEditBox" inherits="EA_EditBox_DefaultFrame" maxchars="49" taborder="2">
+            <Size>
+                <AbsPoint x="650" y="32" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentAFKBackground" >
+                    <AbsPoint x="0" y="-15" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnKeyEscape" function="" />
+            </EventHandlers>
+        </EditBox>	        
+        
+        <!-- Toggle AFK Button -->
+        <Button name="$parentAFKButton" inherits="EA_Button_DefaultResizeable">
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="SocialWindowTabOptions.OnPressAFKButton" />
+          </EventHandlers>
+          <Anchors>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentAFKBackground">
+              <AbsPoint x="-10" y="-10"/>
+            </Anchor>
+          </Anchors>
+        </Button>
+        
+      </Windows> <!-- End of Whole Window Definition Parts -->
+    </Window>    <!-- End of Whole Window Definition  -->
+  </Windows>     <!-- End of Social Window Tab Options -->
+</Interface>

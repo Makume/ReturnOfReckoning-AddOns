@@ -1,0 +1,404 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/SocialWindowTabFriends.lua"/>
+    </Scripts>
+    <Windows>
+
+       <!-- Add Description Window -->
+        <Window name="AddFriendDescription" movable="false" layer="popup"  savesettings="false" >
+            <Size>
+                <AbsPoint x="400" y="150" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="">
+                    <AbsPoint x="0" y="325" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_BlackTransparent" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" >
+                            <AbsPoint x="0" y="4" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentFrame" inherits="EA_FullResizeImage_DefaultFrame" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" />
+                        <Anchor point="bottomleft" relativePoint="bottomleft" />
+                    </Anchors>
+                </FullResizeImage>  
+
+                <Label name="$parentLabel" inherits="DefaultWindowSubTitle" maxchars="256" textalign="center">
+                    <Size>
+                        <AbsPoint x="400" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <EditBox name="$parentText" inherits="EA_EditBox_DefaultFrame" maxchars="20" taborder="1" >
+                    <Size>
+                        <AbsPoint x="300" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentLabel" >
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnKeyEnter" function="SocialWindowTabFriends.OnDescriptionAccept" />
+                        <EventHandler event="OnKeyEscape" function="SocialWindowTabFriends.OnCancelDescription" />
+                    </EventHandlers>
+                </EditBox>
+
+                <Button name="$parentOKButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText">
+                            <AbsPoint x="15" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="SocialWindowTabFriends.OnDescriptionAccept"/>
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentOKButton">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="SocialWindowTabFriends.OnCancelDescription"/>
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+
+        <!-- Templates -->
+        <Label name="SocialWindowTabFriendsHeaderTemplate" font="font_default_sub_heading" maxchars="32" textalign="rightcenter" >
+            <Size>
+                <AbsPoint x="125" y="24"/>
+            </Size>
+            <Color r="255" g="204" b="102" a="255"/>
+        </Label>
+        
+        <Button name="FriendsCommandButtonTemplate" inherits="EA_Button_DefaultResizeable" textalign="center">
+        </Button>
+
+
+        <Button name="FriendsSortButtonTemplate" inherits="EA_Button_ListSort" textalign="center" textAutoFitMinScale="1.0" >
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="SocialWindowTabFriends.OnSortPlayerList" />
+                <EventHandler event="OnMouseOver" function="SocialWindowTabFriends.OnMouseOverSortButton" />
+            </EventHandlers>
+        </Button>
+
+        
+        <!-- Single Row Definition -->
+        <Button name="EA_Button_FriendsListRowTemplate" inherits="EA_Button_SocialWindowRowTemplate" >
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="SocialWindowTabFriends.OnMouseOverPlayerRow" />
+                <EventHandler event="OnMouseOverEnd" function="SocialWindowTabFriends.OnMouseOverPlayerRowEnd" />
+                <EventHandler event="OnLButtonUp" function="SocialWindowTabFriends.OnLButtonUpPlayerRow" />
+                <EventHandler event="OnRButtonUp" function="SocialWindowTabFriends.OnRButtonUpPlayerRow" />
+            </EventHandlers>
+        </Button>
+        
+        <Window name="FriendsListFilterEntry" inherits="EA_SocialFilterEntry" >
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="SocialWindowTabFriends.ToggleFilter" />
+            </EventHandlers>
+        </Window>
+        
+        <Window name="SocialWindowTabFriendsFilterMenu" movable="false" layer="secondary" inherits="EA_Window_Default" savesettings="false">
+            <Size>
+                <AbsPoint x="284" y="125" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottomleft" relativePoint="topright" relativeTo="SocialWindowTabFriendsFilterMenuButton" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="SocialWindowTabFriends.RefreshFilterMenu" />
+                <EventHandler event="OnShutdown"    function="EA_Window_ContextMenu.Shutdown" />
+                <EventHandler event="OnLButtonDown" function="WindowUtils.TrapClick" />
+                <EventHandler event="OnShown"       function="WindowUtils.OnShown" />
+                <EventHandler event="OnHidden"      function="WindowUtils.OnHidden" />
+            </EventHandlers>
+            <Windows>
+                <ListBox name="$parentList" rowdef="FriendsListFilterEntry" visiblerows="3" rowcount="3" rowspacing="6">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="4" y="4"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="-4" y="-4"/>
+                        </Anchor>
+                    </Anchors>
+                    <ListData table="SocialWindowTabFriends.filters" populationfunction="SocialWindowTabFriends.PopulateFilterList"/>
+                </ListBox>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultContextMenuFrame" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" />
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+        
+        <!--*******************************************************************-->
+        <!--                      Whole Window Definition                      -->
+        <!--*******************************************************************-->
+        <Window name="SocialWindowTabFriendsSocket" movable="false" layer="secondary">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="SocialWindowSocket">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="SocialWindowSocket">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="SocialWindowTabFriends.Initialize"/>
+                <EventHandler event="OnShutdown" function="SocialWindowTabFriends.Shutdown"/>
+                <EventHandler event="OnShown" function="SocialWindowTabFriends.OnShown"/>
+                <EventHandler event="OnHidden" function="SocialWindowTabFriends.OnHidden"/>
+            </EventHandlers>            
+            <Windows>
+            
+              <!-- Top Half -->
+              <Window name="$parentTopHalf" layer="EA_FullResizeImage_DefaultFrame" handleinput="false">
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                          <AbsPoint x="0" y="0" />
+                      </Anchor>
+                      <Anchor point="right" relativePoint="bottomright" relativeTo="$parent">
+                          <AbsPoint x="0" y="32" />
+                      </Anchor>
+                  </Anchors>
+              </Window>
+
+              <!-- Top Half Border-->
+              <FullResizeImage name="$parentTopHalfBorder" inherits="EA_FullResizeImage_DefaultFrame">
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                          <AbsPoint x="15" y="15" />
+                      </Anchor>
+                      <Anchor point="right" relativePoint="bottomright" relativeTo="$parentTopHalf">
+                          <AbsPoint x="-15" y="-15" />
+                      </Anchor>
+                  </Anchors>
+              </FullResizeImage>
+
+              <!-- Options Background -->
+              <FullResizeImage name="$parentSearchBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                          <AbsPoint x="20" y="20" />
+                      </Anchor>
+                      <Anchor point="right" relativePoint="bottomright" relativeTo="$parentTopHalf">
+                          <AbsPoint x="-20" y="-20" />
+                      </Anchor>
+                  </Anchors>
+              </FullResizeImage>
+              
+              <!-- Social Window Friends Tab Player Search Label -->
+              <Label name="$parentPlayerSearchLabel" inherits="SocialWindowTabFriendsHeaderTemplate">
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentSearchBackground">
+                          <AbsPoint x="-10" y="8" />
+                      </Anchor>
+                  </Anchors>
+              </Label>
+
+              <!-- Social Window Player Search Edit Box -->
+              <EditBox name="$parentPlayerSearchEditBox" inherits="EA_EditBox_DefaultFrame" maxchars="35" taborder="1">
+                  <Size>
+                      <AbsPoint x="250" y="32"/>
+                  </Size>
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentPlayerSearchLabel">
+                          <AbsPoint x="16" y="0" />
+                      </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                      <EventHandler event="OnKeyEnter" function="SocialWindowTabFriends.AddFriend" />
+                  </EventHandlers>
+              </EditBox>
+                
+              <!-- Add Friend button -->
+              <Button name="$parentCommandAddFriendButton" inherits="FriendsCommandButtonTemplate">
+                  <EventHandlers>
+                      <EventHandler event="OnLButtonUp" function="SocialWindowTabFriends.AddFriend" />
+                  </EventHandlers>
+                  <Anchors>
+                      <Anchor point="right" relativePoint="left" relativeTo="$parentPlayerSearchEditBox">
+                          <AbsPoint x="16" y="4"/>
+                      </Anchor>
+                  </Anchors>
+              </Button>
+              <!-- Switch Friend Types -->
+              <Button name="$parentCommandSwitchFriendButton" inherits="FriendsCommandButtonTemplate">
+                  <EventHandlers>
+                      <EventHandler event="OnLButtonUp" function="SocialWindowTabFriends.SwitchFriendType" />
+                  </EventHandlers>
+                  <Anchors>
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentSearchBackground">
+                          <AbsPoint x="-8" y="-8"/>
+                      </Anchor>
+                  </Anchors>
+              </Button>
+              <!-- Remove Friend Button -->
+              <Button name="$parentCommandRemoveFriendButton" inherits="FriendsCommandButtonTemplate">
+                  <EventHandlers>
+                      <EventHandler event="OnLButtonUp" function="SocialWindowTabFriends.RemoveFriend" />
+                  </EventHandlers>
+                  <Anchors>
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentCommandSwitchFriendButton">
+                          <AbsPoint x="-150" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </Button>
+              <!-- Friends filters menu button -->
+                <Button name="$parentFilterMenuButton" inherits="EA_FilterMenuButtonTemplate" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="center" relativeTo="$parentSearchBackground">
+                            <AbsPoint x="15" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="SocialWindowTabFriends.ToggleFilterMenu" />
+                        <EventHandler event="OnMouseOver" function="SocialWindowBuddyList.OnMouseOverTooltipElement" />
+                    </EventHandlers>
+                </Button>
+              <Label name="$parentFilterLabel" inherits="SocialWindowTabFriendsHeaderTemplate" textalign="leftcenter" >
+                  <Anchors>
+                      <Anchor point="right" relativePoint="left" relativeTo="$parentFilterMenuButton">
+                          <AbsPoint x="16" y="0" />
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <!-- Sort Button Bar -->
+              <Window name="$parentSortButtonBar">
+                  <Size>
+                      <AbsPoint x="1380" y="32" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSearchBackground">
+                          <AbsPoint x="-15" y="8"/>
+                      </Anchor>
+                  </Anchors>
+                  <!-- Sort Buttons-->
+                  <Windows>
+
+                      <!-- Sort by Player Name Button-->
+                      <Button name="$parentNameButton" inherits="FriendsSortButtonTemplate" id="1" >
+                          <Anchors>
+                              <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                  <AbsPoint x="0" y="0"/>
+                              </Anchor>
+                              <Anchor point="topleft" relativePoint="bottomright" relativeTo="">
+                                  <AbsPoint x="290" y="36"/>
+                              </Anchor>
+                          </Anchors>
+                      </Button>
+
+                      <Button name="$parentDescriptionButton" inherits="FriendsSortButtonTemplate" id="2" >
+                          <Anchors>
+                              <Anchor point="topright" relativePoint="topleft" relativeTo="$parentNameButton">
+                                  <AbsPoint x="0" y="0"/>
+                              </Anchor>
+                              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentNameButton">
+                                  <AbsPoint x="290" y="0"/>
+                              </Anchor>
+                          </Anchors>
+                      </Button>
+
+                      <Button name="$parentRankButton" inherits="FriendsSortButtonTemplate" id="3" >
+                          <Anchors>
+                              <Anchor point="topright" relativePoint="topleft" relativeTo="$parentDescriptionButton">
+                                  <AbsPoint x="0" y="0"/>
+                              </Anchor>
+                              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentDescriptionButton">
+                                  <AbsPoint x="114" y="0"/>
+                              </Anchor>
+                          </Anchors>
+                      </Button>
+
+                      <Button name="$parentCareerButton" inherits="FriendsSortButtonTemplate" id="4" >
+                          <Anchors>
+                              <Anchor point="topright" relativePoint="topleft" relativeTo="$parentRankButton">
+                                  <AbsPoint x="0" y="0"/>
+                              </Anchor>
+                              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentRankButton">
+                                  <AbsPoint x="325" y="0"/>
+                              </Anchor>
+                          </Anchors>
+                      </Button>
+
+                      <Button name="$parentTypeButton" inherits="FriendsSortButtonTemplate" id="5" >
+                          <Anchors>
+                              <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCareerButton">
+                                  <AbsPoint x="0" y="0"/>
+                              </Anchor>
+                              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentCareerButton">
+                                  <AbsPoint x="95" y="0"/>
+                              </Anchor>
+                          </Anchors>
+                      </Button>
+
+                      <Button name="$parentOnlineButton" inherits="FriendsSortButtonTemplate" id="6" >
+                          <Anchors>
+                              <Anchor point="topright" relativePoint="topleft" relativeTo="$parentTypeButton">
+                                  <AbsPoint x="0" y="0"/>
+                              </Anchor>
+                              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTypeButton">
+                                  <AbsPoint x="290" y="0"/>
+                              </Anchor>
+                          </Anchors>
+                      </Button>
+
+                      <!-- Arrow Image Definitions -->
+                     <DynamicImage name="$parentUpArrow" inherits="EA_ListSortUpArrow" />
+                     <DynamicImage name="$parentDownArrow" inherits="EA_ListSortDownArrow" />
+
+                  </Windows>
+                  <!-- End of Sort Buttons -->
+
+                </Window>
+                <!-- End of Button Bar Header -->
+                <!-- List Box -->
+                <ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EA_Button_FriendsListRowTemplate" visiblerows="18" rowcount="100" rowspacing="0">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSortButtonBar">
+                            <AbsPoint x="6" y="4"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="-6" y="-6"/>
+                        </Anchor>
+                    </Anchors>
+                    <ListData table="SocialWindowTabFriends.playerListData" populationfunction="SocialWindowTabFriends.UpdatePlayerRow">
+                        <ListColumns>
+                            <ListColumn windowname="Name"   variable="name"   format="wstring" />
+                            <ListColumn windowname="Description"   variable="description"   format="wstring" />
+                            <ListColumn windowname="Rank"   variable="rankString"   format="wstring"  />
+                            <ListColumn windowname="Career" variable="career" format="wstring" />
+                            <ListColumn windowname="Type" variable="type" format="wstring" />
+                            <ListColumn windowname="Online" variable="onlineString" format="wstring" />
+                        </ListColumns>
+                    </ListData>
+                </ListBox>
+
+            </Windows>
+            <!-- End of Whole Window Definition Parts -->
+        </Window>
+        <!-- End of Whole Window Definition  -->
+    </Windows>
+    <!-- End of Guild Window Tab Roster -->
+</Interface>

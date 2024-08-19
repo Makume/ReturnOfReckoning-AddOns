@@ -13,7 +13,7 @@
             <Dependency name="EA_GroupWindow" />
             <Dependency name="EA_ContextMenu" />
         </Dependencies>
-        <Files>        
+        <Files>
             <File name="Source/SocialWindowTemplates.xml" /> 
             <File name="Source/SocialWindowTabSearch.xml" />
             <File name="Source/SocialWindowTabFriends.xml" />
@@ -36,5 +36,5 @@
             <SavedVariable name="SocialWindowTabOptions.Settings" />
         </SavedVariables>
 	<Replaces name="EA_SocialWindow" />
-    </UiMod>    
-</ModuleFile>    
+    </UiMod>
+</ModuleFile>

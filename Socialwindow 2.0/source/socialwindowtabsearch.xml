@@ -1,0 +1,340 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/SocialWindowTabSearch.lua"/>
+  </Scripts>
+  <Windows>
+
+    <!-- Templates -->
+    <Label name="SocialWindowTabSearchHeaderTemplate" font="font_default_sub_heading" maxchars="32" textalign="rightcenter" >
+      <Size>
+        <AbsPoint x="125" y="24"/>
+      </Size>
+      <Color r="255" g="204" b="102" a="255"/>
+    </Label>
+    
+    
+    <Button name="SearchSortButtonTemplate" inherits="EA_Button_ListSort" textalign="center" textAutoFitMinScale="1.0" >
+        <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="SocialWindowTabSearch.OnSortPlayerList" />
+            <EventHandler event="OnMouseOver" function="SocialWindowTabSearch.OnMouseOverSortButton" />
+        </EventHandlers>
+    </Button>
+    
+            
+    <!-- Single Row Definition -->
+    <Button name="EA_Button_SearchRowTemplate" inherits="EA_Button_SocialWindowRowTemplate" >
+        <EventHandlers>
+            <EventHandler event="OnMouseOver" function="SocialWindowTabSearch.OnMouseOverPlayerRow" />
+            <EventHandler event="OnMouseOverEnd" function="SocialWindowTabSearch.OnMouseOverPlayerRowEnd" />
+            <EventHandler event="OnLButtonUp" function="SocialWindowTabSearch.OnLButtonUpPlayerRow" />
+            <EventHandler event="OnRButtonUp" function="SocialWindowTabSearch.OnRButtonUpPlayerRow" />
+        </EventHandlers>
+    </Button>
+            
+    
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="SocialWindowTabSearchSocket" movable="false" layer="secondary">
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="SocialWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="SocialWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="SocialWindowTabSearch.Initialize"/>
+        <EventHandler event="OnShutdown" function="SocialWindowTabSearch.Shutdown"/>
+      </EventHandlers>
+      <Windows>
+
+        <!-- Top Half -->
+        <Window name="$parentTopHalf" layer="background" handleinput="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+            <Anchor point="right" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="0" y="32" />
+            </Anchor>
+          </Anchors>
+        </Window>
+        
+        <!-- Top Half Border-->
+        <FullResizeImage name="$parentTopHalfBorder" inherits="EA_FullResizeImage_DefaultFrame">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                  <AbsPoint x="15" y="15" />
+                </Anchor>
+                <Anchor point="right" relativePoint="bottomright" relativeTo="$parentTopHalf">
+                  <AbsPoint x="-15" y="-15" />
+                </Anchor>
+            </Anchors>
+        </FullResizeImage>
+
+        <!-- Options Background -->
+        <FullResizeImage name="$parentOptionsBackground" inherits="EA_FullResizeImage_DefaultFrame">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="20" y="20" />
+            </Anchor>
+            <Anchor point="right" relativePoint="bottomright" relativeTo="$parentTopHalf">
+              <AbsPoint x="-20" y="-20" />
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <!-- Edit Box Player Name Header-->
+        <Label name="$parentEditBoxPlayerNameHeader" inherits="SocialWindowTabSearchHeaderTemplate">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentOptionsBackground">
+              <AbsPoint x="-10" y="8" />
+            </Anchor>
+          </Anchors>
+        </Label>
+        
+        <!-- Edit Box Player Name -->
+        <EditBox name="$parentEditBoxPlayerName" inherits="EA_EditBox_DefaultFrame" history="15" maxchars="24" taborder="1">
+          <Size>
+            <AbsPoint x="250" y="32"/>
+          </Size>
+          <Anchors>
+            <Anchor point="topright" relativePoint="topleft" relativeTo="$parentEditBoxPlayerNameHeader">
+              <AbsPoint x="16" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+          </EventHandlers>
+        </EditBox>
+
+        <!-- Edit Box Guild Name Header-->
+        <Label name="$parentEditBoxGuildNameHeader" inherits="SocialWindowTabSearchHeaderTemplate">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEditBoxPlayerNameHeader">
+              <AbsPoint x="0" y="10" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Edit Box Guild Name -->
+        <EditBox name="$parentEditBoxGuildName" inherits="EA_EditBox_DefaultFrame" maxchars="30" taborder="2">
+          <Size>
+            <AbsPoint x="250" y="32"/>
+          </Size>
+          <Anchors>
+            <Anchor point="topright" relativePoint="topleft" relativeTo="$parentEditBoxGuildNameHeader">
+              <AbsPoint x="16" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+          </EventHandlers>
+        </EditBox>
+
+        <!-- Edit Box Career Name Header-->
+        <Label name="$parentEditBoxCareerNameHeader" inherits="SocialWindowTabSearchHeaderTemplate">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEditBoxGuildNameHeader">
+              <AbsPoint x="0" y="10" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Edit Box Career Name -->
+        <EditBox name="$parentEditBoxCareerName" inherits="EA_EditBox_DefaultFrame" maxchars="30" taborder="3">
+          <Size>
+            <AbsPoint x="250" y="32"/>
+          </Size>
+          <Anchors>
+            <Anchor point="topright" relativePoint="topleft" relativeTo="$parentEditBoxCareerNameHeader">
+              <AbsPoint x="16" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+          </EventHandlers>
+        </EditBox>
+
+        <!-- Edit Box Zone Name Header-->
+        <Label name="$parentComboBoxZoneNamesHeader" inherits="SocialWindowTabSearchHeaderTemplate" >
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEditBoxCareerNameHeader">
+              <AbsPoint x="0" y="10" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Edit Box Zone Name -->
+        <ComboBox name="$parentComboBoxZoneNames" inherits="EA_ComboBox_DefaultResizableLarge" layer="secondary">
+          <Anchors>
+            <Anchor point="topright" relativePoint="topleft" relativeTo="$parentComboBoxZoneNamesHeader">
+              <AbsPoint x="16" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnSelChanged" function="SocialWindowTabSearch.OnFilterSelChanged" />
+          </EventHandlers>
+        </ComboBox>
+
+        <!-- Edit Box Min Rank Header-->
+        <Label name="$parentEditBoxMinRankHeader" inherits="SocialWindowTabSearchHeaderTemplate" >
+          <Anchors>
+            <Anchor point="top" relativePoint="topleft" relativeTo="$parentOptionsBackground">
+              <AbsPoint x="-16" y="8" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Edit Box Min Rank Edit Box -->
+        <EditBox name="$parentEditBoxMinRank" inherits="EA_EditBox_DefaultFrame" maxchars="3" input="numbers" taborder="5">
+          <Size>
+            <AbsPoint x="50" y="32"/>
+          </Size>
+          <Anchors>
+            <Anchor point="topright" relativePoint="topleft" relativeTo="$parentEditBoxMinRankHeader">
+              <AbsPoint x="16" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+          </EventHandlers>
+        </EditBox>
+
+        <!-- Edit Box Max Rank Header-->
+        <Label name="$parentEditBoxMaxRankHeader" inherits="SocialWindowTabSearchHeaderTemplate" >
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEditBoxMinRankHeader">
+              <AbsPoint x="0" y="10" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Edit Box Min Rank Edit Box -->
+        <EditBox name="$parentEditBoxMaxRank" inherits="EA_EditBox_DefaultFrame" maxchars="3" input="numbers" taborder="6">
+          <Size>
+            <AbsPoint x="50" y="32"/>
+          </Size>
+          <Anchors>
+            <Anchor point="topright" relativePoint="topleft" relativeTo="$parentEditBoxMaxRankHeader">
+              <AbsPoint x="16" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+          </EventHandlers>
+        </EditBox>
+        
+        <!-- Check Box Include Advisors Only -->
+        <Window name="$parentIncludeAdvisorsOnly" inherits="EA_LabelCheckButtonSmall">
+          <Size>
+            <AbsPoint x="300" y="30" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEditBoxMaxRankHeader">
+              <AbsPoint x="10" y="10" />
+            </Anchor>
+          </Anchors>
+        </Window>
+        
+        <!-- Social Window Tab Search Find Button -->
+        <Button name="$parentFindButton" inherits="EA_Button_DefaultResizeable">
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="SocialWindowTabSearch.OnPressSearchPlayerButton" />
+          </EventHandlers>
+          <Anchors>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentOptionsBackground">
+              <AbsPoint x="-8" y="-8"/>
+            </Anchor>
+          </Anchors>
+        </Button>
+                
+        <!-- Sort Button Bar -->
+        <Window name="$parentSortButtonBar">
+            <Size>
+                <AbsPoint x="1380" y="32" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentOptionsBackground">
+                    <AbsPoint x="-15" y="8"/>
+                </Anchor>
+            </Anchors>
+            <!-- Sort Buttons-->
+            <Windows>
+
+              <!-- Sort by Player Name Button-->
+              <Button name="$parentNameButton" inherits="SearchSortButtonTemplate" id="1" >
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                          <AbsPoint x="0" y="0"/>
+                      </Anchor>
+                      <Anchor point="topleft" relativePoint="bottomright" relativeTo="">
+                          <AbsPoint x="580" y="36"/>
+                      </Anchor>
+                  </Anchors>
+              </Button>
+
+              <Button name="$parentRankButton" inherits="SearchSortButtonTemplate" id="2" >
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentNameButton">
+                          <AbsPoint x="0" y="0"/>
+                      </Anchor>
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentNameButton">
+                          <AbsPoint x="110" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </Button>
+
+              <Button name="$parentCareerButton" inherits="SearchSortButtonTemplate" id="3" >
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentRankButton">
+                          <AbsPoint x="0" y="0"/>
+                      </Anchor>
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentRankButton">
+                          <AbsPoint x="415" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </Button>
+
+              <Button name="$parentLocationButton" inherits="SearchSortButtonTemplate" id="4" >
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCareerButton">
+                          <AbsPoint x="0" y="0"/>
+                      </Anchor>
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentCareerButton">
+                          <AbsPoint x="290" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </Button>
+
+               <!-- Arrow Image Definitions -->
+               <DynamicImage name="$parentUpArrow" inherits="EA_ListSortUpArrow" />
+               <DynamicImage name="$parentDownArrow" inherits="EA_ListSortDownArrow" />
+               
+          </Windows>
+          <!-- End of Sort Buttons -->
+
+        </Window>            
+        <!-- End of Button Bar Header -->
+        
+        <!-- List Box -->
+        <ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EA_Button_SearchRowTemplate" visiblerows="18" rowcount="100" rowspacing="0">
+          <Anchors>
+              <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSortButtonBar">
+                  <AbsPoint x="6" y="4"/>
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                  <AbsPoint x="-6" y="-6"/>
+              </Anchor>
+          </Anchors>
+          <ListData table="SocialWindowTabSearch.playerListData" populationfunction="SocialWindowTabSearch.UpdatePlayerRow">
+              <ListColumns>
+                  <ListColumn windowname="Name"     variable="name"       format="wstring" />
+                  <ListColumn windowname="Rank"     variable="rankString" format="wstring"  />
+                  <ListColumn windowname="Online" variable="location"   format="wstring" />
+                  <ListColumn windowname="Career"   variable="career"     format="wstring" />
+              </ListColumns>
+          </ListData>
+        </ListBox>
+              
+      </Windows> <!-- End of Whole Window Definition Parts -->
+    </Window>    <!-- End of Whole Window Definition  -->
+  </Windows>     <!-- End of Guild Window Tab Roster -->
+</Interface>

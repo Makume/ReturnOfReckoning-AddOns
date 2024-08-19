@@ -1,0 +1,143 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/SocialWindowTabIgnore.lua"/>
+  </Scripts>
+  <Windows>
+   
+   
+      <Label name="EA_Label_SocialListItem" inherits="EA_Label_ChatText" textalign="left" />
+   
+      <!-- Single Row Definition -->
+      
+      <Button name="EA_Button_SocialWindowRowTemplate"  inherits="EA_Button_ResizeIconFrame_NoNormalImage" >
+          <Size>
+              <AbsPoint x="1370" y="26" />
+          </Size>
+          <Windows>
+              <!-- Row Label Background -->
+              <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground" handleinput="false" >
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="" />
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="" />
+                  </Anchors>
+              </FullResizeImage>
+
+              <!-- Data Labels -->
+              <!-- Row Label Player Name -->
+              <Label name="$parentName" inherits="EA_Label_SocialListItem" handleinput="false" >
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                          <AbsPoint x="12" y="0"/>
+                      </Anchor>
+                      <Anchor point="topleft" relativePoint="bottomright" relativeTo="">
+                          <AbsPoint x="290" y="26"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <!-- Row Label Player Description -->
+              <Label name="$parentDescription" inherits="EA_Label_SocialListItem" handleinput="false" >
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentName">
+                          <AbsPoint x="0" y="0"/>
+                      </Anchor>
+                      <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentName">
+                          <AbsPoint x="290" y="26"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <!-- Row Label Player Rank -->
+              <Label name="$parentRank" inherits="EA_Label_SocialListItem" textalign="center" handleinput="false" >
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentDescription">
+                          <AbsPoint x="0" y="0"/>
+                      </Anchor>
+                      <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentDescription">
+                          <AbsPoint x="114" y="26"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+
+              <!-- Row Label Player Career -->
+              <Label name="$parentCareer" inherits="EA_Label_SocialListItem"  handleinput="false" >
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentRank"  handleinput="false" >
+                          <AbsPoint x="4" y="0"/>
+                      </Anchor>
+                      <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentRank">
+                          <AbsPoint x="329" y="26"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+
+              <!-- Row Label Player Friend Type -->
+              <Label name="$parentType" inherits="EA_Label_SocialListItem"  handleinput="false" >
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCareer"  handleinput="false" >
+                          <AbsPoint x="4" y="0"/>
+                      </Anchor>
+                      <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentCareer">
+                          <AbsPoint x="90" y="26"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+
+              <!-- Row Label Player Online -->
+              <Label name="$parentOnline" inherits="EA_Label_SocialListItem" textalign="left" handleinput="false" >
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentType">
+                          <AbsPoint x="4" y="0"/>
+                      </Anchor>
+                      <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentType">
+                          <AbsPoint x="279" y="26"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+
+          </Windows>
+          <!-- End of Player Name Row-->
+      </Button>
+      
+    <!-- Buddy List Filter Menu Window -->
+    <Button name="EA_FilterMenuButtonTemplate" inherits="EA_Button_Default" layer="popup" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" >
+        <Size>
+            <AbsPoint x="21" y="22" />
+        </Size>
+        <TexSlices>
+            <Normal         id="Map-Filters-Button" />
+            <NormalHighlit  id="Map-Filters-Button-ROLLOVER" />
+            <Pressed        id="Map-Filters-Button-Depressed" />
+            <PressedHighlit id="Map-Filters-Button-ROLLOVER" />
+        </TexSlices>
+    </Button>
+    
+    <Window name="EA_SocialFilterEntry">
+        <Size>
+            <AbsPoint x="275" y="32" />
+        </Size>
+        <Windows>
+            <Button name="$parentButton" inherits="EA_Button_DefaultCheckBox"
+                    textalign="left" textAutoFitMinScale="0.5">
+                <Size>
+                    <AbsPoint x="22" y="22" />
+                </Size>
+                <Anchors>
+                    <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                        <AbsPoint x="5" y="0" />
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Label name="$parentLabel" font="font_default_text" textalign="left" handleinput="false" wordwrap="false">
+                <Size>
+                    <AbsPoint x="195" y="32" />
+                </Size>
+                <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentButton">
+                        <AbsPoint x="5" y="6" />
+                    </Anchor>
+                </Anchors>
+            </Label>
+        </Windows>
+    </Window>
+    
+    </Windows>   
+</Interface>

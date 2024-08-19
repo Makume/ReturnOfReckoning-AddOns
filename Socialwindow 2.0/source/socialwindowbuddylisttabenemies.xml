@@ -1,0 +1,83 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/SocialWindowBuddyListTabEnemies.lua"/>
+    </Scripts>
+    <Windows>
+        
+        <!-- Single Row Definition -->
+        <Button name="EA_Button_EnemiesBuddyListRowTemplate" inherits="EA_Button_ResizeIconFrame_NoNormalImage">
+            <Size>
+              <AbsPoint x="145" y="26" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="SocialWindowBuddyListTabEnemies.OnMouseOverPlayerRow" />
+            </EventHandlers>
+            <Windows>
+              <!-- Row Label Background -->
+              <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground" handleinput="false" >
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="" />
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="" />
+                  </Anchors>
+              </FullResizeImage>
+
+              <!-- Data Labels -->
+              <!-- Row Label Player Name -->
+              <Label name="$parentName" inherits="EA_Label_SocialListItem" handleinput="false" warnOnTextCropped="false">
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                          <AbsPoint x="12" y="4"/>
+                      </Anchor>
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                      </Anchor>
+                  </Anchors>
+              </Label>
+             </Windows>
+
+        </Button>
+        
+        <!--*******************************************************************-->
+        <!--                      Whole Window Definition  (Buddy List)        -->
+        <!--*******************************************************************-->
+        <Window name="SocialWindowBuddyListTabEnemiesSocket" movable="false" layer="secondary">
+            <Size>
+              <AbsPoint x="145" y="200" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="SocialWindowBuddyListSocket">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="SocialWindowBuddyListSocket">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="SocialWindowBuddyListTabEnemies.Initialize"/>
+            </EventHandlers>            
+            <Windows>
+
+                <!-- List Box -->
+                <ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EA_Button_EnemiesBuddyListRowTemplate" visiblerows="8" rowcount="100" rowspacing="0">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="6" y="4"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="-6" y="-6"/>
+                        </Anchor>
+                    </Anchors>
+                    <ListData table="SocialWindowBuddyListTabEnemies.playerListData" populationfunction="SocialWindowBuddyListTabEnemies.UpdatePlayerRow">
+                        <ListColumns>
+                            <ListColumn windowname="Name"   variable="name"   format="wstring" />
+                        </ListColumns>
+                    </ListData>
+                </ListBox>
+
+
+            </Windows>
+            <!-- End of Whole Window Definition Parts -->
+        </Window>
+        <!-- End of Whole Window Definition  -->
+    </Windows>
+
+</Interface>

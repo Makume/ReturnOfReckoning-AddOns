@@ -1,0 +1,245 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/SocialWindowBuddyList.lua"/>
+    </Scripts>
+    <Windows>
+        
+        <DynamicImage name="FriendsImage" handleinput="false" layer="popup">
+            <Size>
+                <AbsPoint x="20" y="20" />
+            </Size>
+        </DynamicImage>
+        
+        <!-- View mode button definitions -->
+        <Button name="SocialWindowBuddyListTabTemplate" inherits="EA_Button_Tab">
+          <Size>
+            <AbsPoint x="64" y="46" />
+          </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="SocialWindowBuddyList.OnLButtonUpTab" />
+                <EventHandler event="OnLButtonDown" function="SocialWindowBuddyList.OnLButtonDownTab" />
+                <EventHandler event="OnMouseOver" function="SocialWindowBuddyList.OnMouseOverTab" />
+            </EventHandlers>
+        </Button>
+        
+        <Window name="BuddyListFilterEntry" inherits="EA_SocialFilterEntry" >
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="SocialWindowBuddyList.ToggleFilter" />
+            </EventHandlers>
+        </Window>
+        
+        <Window name="SocialWindowBuddyListFilterMenu" movable="false" layer="secondary" inherits="EA_Window_Default" savesettings="false">
+            <Size>
+                <AbsPoint x="284" y="125" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottomleft" relativePoint="topright" relativeTo="SocialWindowBuddyListFilterMenuButton" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="SocialWindowBuddyList.RefreshFilterMenu" />
+                <EventHandler event="OnShutdown"    function="EA_Window_ContextMenu.Shutdown" />
+                <EventHandler event="OnLButtonDown" function="WindowUtils.TrapClick" />
+                <EventHandler event="OnShown"       function="WindowUtils.OnShown" />
+                <EventHandler event="OnHidden"      function="WindowUtils.OnHidden" />
+            </EventHandlers>
+            <Windows>
+                <ListBox name="$parentList" rowdef="BuddyListFilterEntry" visiblerows="3" rowcount="3" rowspacing="6">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="4" y="4"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="-4" y="-4"/>
+                        </Anchor>
+                    </Anchors>
+                    <ListData table="SocialWindowBuddyList.filters" populationfunction="SocialWindowBuddyList.PopulateFilterList"/>
+                </ListBox>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultContextMenuFrame" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" />
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+        
+        <Window name="SocialWindowBuddyList" movable="true" savesettings="true" layer="secondary">
+            <Size>
+                <AbsPoint x="185" y="342"/>
+            </Size>
+            <Anchors>
+                <Anchor point="right" relativePoint="right" relativeTo="">
+                    <AbsPoint x="-200" y="0"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="SocialWindowBuddyList.Initialize"/>
+                <EventHandler event="OnShutdown"    function="SocialWindowBuddyList.Shutdown"/>
+                <EventHandler event="OnRButtonUp"   function="SocialWindowBuddyList.OnRButtonUp" />
+                <EventHandler event="OnHidden"   function="SocialWindowBuddyList.OnHidden" />
+            </EventHandlers>
+
+            <Windows>
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame"> 
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="10"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="-10" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="center" relativeTo="$parentBackground">
+                            <AbsPoint x="-5" y="5" />
+                        </Anchor>
+                    </Anchors>
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="SocialWindowBuddyList.ToggleSocialWindows" />
+					</EventHandlers>
+				</Button>
+				
+
+                <!--********************-->
+                <!-- Social Window Tabs -->
+                <!--********************-->
+
+                <Window name="$parentTabSeparatorLeft" inherits="EA_Window_TabSeparatorLeftSide" layer="popup">
+                    <Size>
+                        <AbsPoint x="10" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentViewMode1">
+                            <AbsPoint x="0" y="14" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- View mode button definitions -->
+                <Button name="$parentViewMode1" inherits="SocialWindowBuddyListTabTemplate" id="1">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="10" y="11" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" inherits="FriendsImage">
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center">
+                                    <AbsPoint x="2" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Button>
+                
+                <Window name="$parentTabSeparatorRight" inherits="EA_Window_TabSeparatorRightSide" layer="popup">
+                    <Size>
+                        <AbsPoint x="102" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentViewMode1">
+                            <AbsPoint x="0" y="14" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <FullResizeImage name="$parentTopBackgroundFill" inherits="EA_FullResizeImage_MetalFill" handleinput="false" layer="background">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTabSeparatorLeft">
+                            <AbsPoint x="9" y="0"/>
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentTabSeparatorRight">
+                            <AbsPoint x="-8" y="32"/>
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>  
+                
+               <Window name="$parentSeparator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTopBackgroundFill" >
+                            <AbsPoint x="-9" y="-12" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTopBackgroundFill" >
+                            <AbsPoint x="8" y="-12" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Label name="$parentSectionTitle" inherits="SocialWindowTabFriendsHeaderTemplate" textalign="center" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTopBackgroundFill">
+                            <AbsPoint x="0" y="5"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTopBackgroundFill">
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Button name="$parentFilterMenuButton" inherits="EA_FilterMenuButtonTemplate" >
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parentTopBackgroundFill">
+                            <AbsPoint x="3" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="SocialWindowBuddyList.ToggleFilterMenu" />
+                        <EventHandler event="OnMouseOver" function="SocialWindowBuddyList.OnMouseOverTooltipElement" />
+                    </EventHandlers>
+                </Button>
+                
+                <!-- <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="-70"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window> -->
+                
+                <!-- bottom buttons, search / options -->
+                <Button name="$parentSearchButton" inherits="EA_Button_ListSort" font="font_chat_text" textalign="center" textAutoFitMinScale=".5">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="SocialWindowBuddyList.ShowSocial" />
+                        <EventHandler event="OnMouseOver" function="SocialWindowBuddyList.OnMouseOverTooltipElement" />
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="7" y="-38"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                            <AbsPoint x="-8" y="-8"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <!--********************-->
+                <!--     Tab Socket     -->
+                <!--********************-->
+                <Window name="$parentSocket" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTopBackgroundFill">
+                            <AbsPoint x="-9" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentSearchButton">
+                            <AbsPoint x="8" y="7" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                    </Windows>
+                </Window>
+
+                <Window name="SocialWindowBuddyListTabFriends" inherits="SocialWindowBuddyListTabFriendsSocket"/>
+
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>
