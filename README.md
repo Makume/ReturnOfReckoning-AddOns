@@ -3,6 +3,11 @@
 > 
 > User interface AddOns for the game [Warhammer Online - Return of Reckoning](https://www.returnofreckoning.com/) that I have either created or i have extended. Official releases can usually be found at [Idrinth](https://tools.idrinth.de/addons/).
 
+> [!NOTE]
+> # Information
+> 
+> if you get a 404 error after selecting an add-on, it is not yet public.
+
 > [!TIP]
 > # How to install the AddOns
 > 
