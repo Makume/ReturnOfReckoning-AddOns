@@ -1,0 +1,3 @@
+[submodule "DisableCombatLog"]
+	path = DisableCombatLog
+	url = https://github.com/Makume/Return-Of-Reckoning-DisableCombatLog.git
