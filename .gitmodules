@@ -2,3 +2,47 @@
 	path = DisableCombatLog
 	url = https://github.com/Makume/Return-Of-Reckoning-DisableCombatLog.git
 	branch = main
+[submodule "HideActionBarPageSelector"]
+	path = HideActionBarPageSelector
+	url = https://github.com/Makume/HideActionBarPageSelector.git
+	branch = main
+[submodule "LogOutWindow"]
+	path = LogOutWindow
+	url = https://github.com/Makume/LogOutWindow.git
+	branch = main
+[submodule "OnKeyPress"]
+	path = OnKeyPress
+	url = https://github.com/Makume/OnKeyPress.git
+	branch = main
+[submodule "RorTactics"]
+	path = RorTactics
+	url = https://github.com/Makume/RorTactics.git
+	branch = main
+[submodule "ScenarioQueueLeaveAll"]
+	path = ScenarioQueueLeaveAll
+	url = https://github.com/Makume/ScenarioQueueLeaveAll.git
+	branch = main
+[submodule "SellPrice"]
+	path = SellPrice
+	url = https://github.com/Makume/SellPrice.git
+	branch = main
+[submodule "SocialWindow 2.0"]
+	path = SocialWindow 2.0
+	url = https://github.com/Makume/SocialWindow-2.0.git
+	branch = main
+[submodule "TimeInQueue"]
+	path = TimeInQueue
+	url = https://github.com/Makume/TimeInQueue.git
+	branch = main
+[submodule "WarBoard_Clock"]
+	path = WarBoard_Clock
+	url = https://github.com/Makume/WarBoard_Clock.git
+	branch = main
+[submodule "WarBoard_Session"]
+	path = WarBoard_Session
+	url = https://github.com/Makume/WarBoard_Session.git
+	branch = main
+[submodule "WarBoard_TogglerDisableCombatLog"]
+	path = WarBoard_TogglerDisableCombatLog
+	url = https://github.com/Makume/WarBoard_TogglerDisableCombatLog.git
+	branch = main
