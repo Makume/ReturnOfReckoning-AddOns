@@ -2,3 +2,7 @@
 	path = DisableCombatLog
 	url = https://github.com/Makume/Return-Of-Reckoning-DisableCombatLog.git
 	branch = main
+[submodule "DisableCombatLog2"]
+	path = DisableCombatLog2
+	url = https://github.com/Makume/Return-Of-Reckoning-DisableCombatLog.git
+	branch = main
