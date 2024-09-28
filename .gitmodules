@@ -50,3 +50,11 @@
 	path = Enemy
 	url = https://github.com/Makume/Enemy.git
 	branch = main
+[submodule "StopRes"]
+	path = StopRes
+	url = https://github.com/Makume/StopRes.git
+	branch = main
+[submodule "RezEmote"]
+	path = RezEmote
+	url = https://github.com/Makume/RezEmote.git
+	branch = main
