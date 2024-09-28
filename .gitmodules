@@ -46,3 +46,7 @@
 	path = WarBoard_TogglerDisableCombatLog
 	url = https://github.com/Makume/WarBoard_TogglerDisableCombatLog.git
 	branch = main
+[submodule "Enemy"]
+	path = Enemy
+	url = https://github.com/Makume/Enemy.git
+	branch = main
