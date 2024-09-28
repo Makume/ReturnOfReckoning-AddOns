@@ -2,7 +2,3 @@
 	path = DisableCombatLog
 	url = https://github.com/Makume/Return-Of-Reckoning-DisableCombatLog.git
 	branch = main
-[submodule "HideActionBarPageSelector"]
-	path = HideActionBarPageSelector
-	url = https://github.com/Makume/ReturnOfReckoning-AddOns-HideActionBarPageSelector.git
-	branch = main
