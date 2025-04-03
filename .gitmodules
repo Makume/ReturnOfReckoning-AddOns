@@ -73,3 +73,6 @@
 [submodule "BiggerLootBag"]
 	path = BiggerLootBag
 	url = https://github.com/Makume/BiggerLootBag.git
+[submodule "AssignBearerFix"]
+	path = AssignBearerFix
+	url = https://github.com/Makume/AssignBearerFix.git
