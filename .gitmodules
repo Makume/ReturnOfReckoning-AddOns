@@ -58,3 +58,12 @@
 	path = RezEmote
 	url = https://github.com/Makume/RezEmote.git
 	branch = main
+[submodule "WarBoard_AAO"]
+	path = WarBoard_AAO
+	url = https://github.com/Makume/WarBoard_AAO.git
+[submodule "WarBoard_OilTimer"]
+	path = WarBoard_OilTimer
+	url = https://github.com/Makume/WarBoard_OilTimer.git
+[submodule "WarBoard_RamTimer"]
+	path = WarBoard_RamTimer
+	url = https://github.com/Makume/WarBoard_RamTimer.git
