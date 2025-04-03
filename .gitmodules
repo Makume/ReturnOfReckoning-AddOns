@@ -67,3 +67,9 @@
 [submodule "WarBoard_RamTimer"]
 	path = WarBoard_RamTimer
 	url = https://github.com/Makume/WarBoard_RamTimer.git
+[submodule "BagBonus"]
+	path = BagBonus
+	url = https://github.com/Makume/BagBonus.git
+[submodule "BiggerLootBag"]
+	path = BiggerLootBag
+	url = https://github.com/Makume/BiggerLootBag.git
