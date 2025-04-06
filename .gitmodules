@@ -76,3 +76,6 @@
 [submodule "AssignBearerFix"]
 	path = AssignBearerFix
 	url = https://github.com/Makume/AssignBearerFix.git
+[submodule "OptOut"]
+	path = OptOut
+	url = https://github.com/Makume/OptOut.git
