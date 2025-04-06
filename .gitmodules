@@ -79,3 +79,6 @@
 [submodule "OptOut"]
 	path = OptOut
 	url = https://github.com/Makume/OptOut.git
+[submodule "WarBoard_WarReport"]
+	path = WarBoard_WarReport
+	url = https://github.com/Makume/WarBoard_WarReport.git
