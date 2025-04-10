@@ -1,5 +1,6 @@
 > [!IMPORTANT]
 > # Working on (08.04.2025)
+> **LeaderLine (1.0.0)** : Development<br>
 > **OptOut (1.0.0)** : Test phase<br>
 > **StopRes (1.1.0)** : Test phase<br>
 > **WarBoard_RamTimer (1.0.0)** : Test phase<br>
