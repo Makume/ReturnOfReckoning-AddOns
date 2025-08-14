@@ -74,10 +74,6 @@
 	path = AssignBearerFix
 	url = https://github.com/Makume/AssignBearerFix.git
 	branch = main
-[submodule "OptOut"]
-	path = OptOut
-	url = https://github.com/Makume/OptOut.git
-	branch = main
 [submodule "WarBoard_WarReport"]
 	path = WarBoard_WarReport
 	url = https://github.com/Makume/WarBoard_WarReport.git
