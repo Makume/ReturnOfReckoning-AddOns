@@ -1,10 +1,7 @@
 > [!IMPORTANT]
-> # Working on (11.04.2025)
-> **LeaderLine (1.0.0)** : Development<br>
+> # Working on (14.08.2025)
 > **OptOut (1.0.0)** : Test phase<br>
 > **StopRes (1.1.0)** : Test phase<br>
-> **WarBoard_OilTimer (1.0.0)** : Test phase<br>
-> **WarBoard_RamTimer (1.0.0)** : Test phase<br>
 > **ENEMY (3.0.0)** : Roadmap created<br>
 
 > [!NOTE]
@@ -39,13 +36,3 @@
 > # You found a bug?
 > 
 > Report the bug [here](https://github.com/Makume/ReturnOfReckoning-AddOns/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=%5BBUG%5D)
-
-> [!TIP]
-> # You have a request for an existing AddOn?
-> 
-> Create the request [here](https://github.com/Makume/ReturnOfReckoning-AddOns/issues/new?assignees=&labels=enhancement&projects=&template=feature_request.md&title=%5BFEATURE%5D)
-
-> [!TIP]
-> # You have a request for a new AddOn?
-> 
-> Create the request [here](https://github.com/Makume/ReturnOfReckoning-AddOns/issues/new?assignees=&labels=new&projects=&template=addon-request.md&title=%5BNEW%5D)
