@@ -82,3 +82,7 @@
 	path = WarBoard_WarReport
 	url = https://github.com/Makume/WarBoard_WarReport.git
 	branch = main
+[submodule "SoundButtonClick"]
+	path = SoundButtonClick
+	url = https://github.com/Makume/SoundButtonClick.git
+	branch = main
