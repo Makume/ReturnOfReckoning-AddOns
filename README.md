@@ -1,6 +1,5 @@
 > [!IMPORTANT]
-> # Working on (14.08.2025)
-> **StopRes (1.1.0)** : Test phase<br>
+> # Working on (16.02.2026)
 > **ENEMY (3.0.0)** : in Work<br>
 
 > [!NOTE]
@@ -24,8 +23,6 @@
 
 > [!IMPORTANT]
 > # Support
->
-> And special thanks to my guild [Bene Tleilax](https://discord.gg/F7zVXDuaVA)
 > 
 > With kind regards
 > 
