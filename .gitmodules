@@ -94,3 +94,7 @@
 	path = WarBoard_WarBandKills
 	url = https://github.com/Makume/WarBoard_WarBandKills.git
 	branch = main
+[submodule "WarBoard_Menu"]
+	path = WarBoard_Menu
+	url = https://github.com/Makume/WarBoard_Menu.git
+	branch = main
