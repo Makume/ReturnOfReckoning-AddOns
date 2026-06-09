@@ -82,3 +82,15 @@
 	path = SoundButtonClick
 	url = https://github.com/Makume/SoundButtonClick.git
 	branch = main
+[submodule "RezRequest"]
+	path = RezRequest
+	url = https://github.com/Makume/RezRequest.git
+	branch = main
+[submodule "ThankTheResser"]
+	path = ThankTheResser
+	url = https://github.com/Makume/ThankTheResser.git
+	branch = main
+[submodule "WarBoard_WarBandKills"]
+	path = WarBoard_WarBandKills
+	url = https://github.com/Makume/WarBoard_WarBandKills.git
+	branch = main
