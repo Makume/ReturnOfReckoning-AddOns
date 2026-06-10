@@ -98,3 +98,11 @@
 	path = WarBoard_Menu
 	url = https://github.com/Makume/WarBoard_Menu.git
 	branch = main
+[submodule "RvRStats"]
+	path = RvRStats
+	url = https://github.com/Makume/RvRStats.git
+	branch = main
+[submodule "LevelUp"]
+	path = LevelUp
+	url = https://github.com/Makume/LevelUp.git
+	branch = main
