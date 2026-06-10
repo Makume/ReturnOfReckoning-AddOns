@@ -106,3 +106,10 @@
 	path = LevelUp
 	url = https://github.com/Makume/LevelUp.git
 	branch = main
+[submodule "BookOfBinding"]
+	path = BookOfBinding
+	url = https://github.com/Makume/BookOfBinding.git
+	branch = main
+[submodule "LOTDStatus"]
+	path = LOTDStatus
+	url = https://github.com/Makume/LOTDStatus.git
