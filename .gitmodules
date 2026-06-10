@@ -113,3 +113,4 @@
 [submodule "LOTDStatus"]
 	path = LOTDStatus
 	url = https://github.com/Makume/LOTDStatus.git
+	branch = main
