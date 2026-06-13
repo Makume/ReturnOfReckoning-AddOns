@@ -114,3 +114,11 @@
 	path = LOTDStatus
 	url = https://github.com/Makume/LOTDStatus.git
 	branch = main
+[submodule "wbLeadHelper"]
+	path = wbLeadHelper
+	url = https://github.com/Makume/wbLeadHelper.git
+	branch = main
+[submodule "WarBoard_Inf"]
+	path = WarBoard_Inf
+	url = https://github.com/Makume/WarBoard_Inf.git
+	branch = main
